@@ -22,7 +22,7 @@ public class CentralsRepresentation {
 
 
     /* Constructor */
-    public CentralsRepresentation(/*int numMaxCentrals,*/ int numClients){
+    public CentralsRepresentation(/*int numMaxCentrals,*/ int numClients) throws Exception {
         //this.numMaxCentrals = numMaxCentrals;
         this.numClients = numClients;
 
