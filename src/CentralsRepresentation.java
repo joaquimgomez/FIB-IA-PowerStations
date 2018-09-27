@@ -37,11 +37,23 @@ public class CentralsRepresentation {
 
         centrals = new Centrales(propCentrals, 19);
         clients = new Clientes(numClients, propClients, propClientsGuaranteed, 10);
+
+        connections = new int [clients.size()];
+
+        if(initConnections)     connect();
     }
 
     /* Constructor per copy */
     public CentralsRepresentation(){
 
     }
+
+    /* */
+    private void connect(){
+        for (int i = 0; i < connections.length; i++)
+            connections[i] = r.nextInt(centrals.size());
+    }
+
+
 
 }
