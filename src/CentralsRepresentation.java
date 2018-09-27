@@ -22,7 +22,7 @@ public class CentralsRepresentation {
 
 
     /* Constructor */
-    public CentralsRepresentation(/*int numMaxCentrals,*/ int numClients, boolean initConnections) throws Exception {
+    public CentralsRepresentation(/*int numMaxCentrals,*/ int numClients, int tipSolInit) throws Exception {
         //this.numMaxCentrals = numMaxCentrals;
         this.numClients = numClients;
 
@@ -40,7 +40,7 @@ public class CentralsRepresentation {
 
         connections = new int [clients.size()];
 
-        if(initConnections)     connect();
+        connect(tipSolInit);
     }
 
     /* Constructor per copy */
@@ -49,11 +49,14 @@ public class CentralsRepresentation {
     }
 
     /* */
-    private void connect(){
-        for (int i = 0; i < connections.length; i++)
-            connections[i] = r.nextInt(centrals.size());
-    }
+    private void connect(int tipSolInit){
+        if(tipSolInit == 1){
 
+        } else {
+
+        }
+
+    }
 
 
 }
