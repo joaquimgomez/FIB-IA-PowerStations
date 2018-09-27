@@ -7,6 +7,6 @@ import java.util.*;
 public class CentralsSuccessorFunction implements SuccessorFunction {
 
 	public List getSuccessors(Object eState) {
-		
+		return new ArrayList();
 	}
 }
