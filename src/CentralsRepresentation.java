@@ -27,17 +27,20 @@ public class CentralsRepresentation {
         this.numClients = numClients;
 
         int [] propCentrals = new int[3];
-        for (int i = 0; i < propCentrals.length; i++)     propCentrals[i] = r.nextInt() + 1;
+        for (int i = 0; i < propCentrals.length; i++) {
+            propCentrals[i] = r.nextInt() + 1;
+        }
 
         double [] propClients = new double[3];
-        for (int i = 0; i < propClients.length - 1; i++)    propClients[i] = r.nextDouble() + 0.1;
-        propClients[2] = 1.0 - propClients[0] - propClients[1];
+        for (int i = 0; i < propClients.length - 1; i++) {
+            propClients[i] = r.nextDouble() + 0.1;
+        }
 
+        propClients[2] = 1.0 - propClients[0] - propClients[1];
         double propClientsGuaranteed = r.nextDouble();
 
         centrals = new Centrales(propCentrals, 19);
         clients = new Clientes(numClients, propClients, propClientsGuaranteed, 10);
-
         connections = new int [clients.size()];
 
         connect(tipSolInit);
@@ -54,9 +57,12 @@ public class CentralsRepresentation {
 
         } else {
 
+<<<<<<< Updated upstream
         }
 
     }
 
 
+=======
+>>>>>>> Stashed changes
 }

@@ -20,17 +20,18 @@
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="75" />
+          <entry key="java" value="102" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="75" />
+          <entry key="JAVA" value="102" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -120,6 +121,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" />
         <option value="$PROJECT_DIR$/src/CentralsGoalTest.java" />
+<<<<<<< Updated upstream
+=======
+        <option value="$PROJECT_DIR$/Main.java" />
+>>>>>>> Stashed changes
         <option value="$PROJECT_DIR$/src/CentralsRepresentation.java" />
         <option value="$PROJECT_DIR$/src/CentralsSuccessorFunction.java" />
         <option value="$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java" />
@@ -137,7 +142,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< Updated upstream
       <pane id="PackagesPane" />
+=======
+      <pane id="Scope" />
+>>>>>>> Stashed changes
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,6 +168,7 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< Updated upstream
       <pane id="Scope" />
     </panes>
   </component>
@@ -211,7 +221,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32959184" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
