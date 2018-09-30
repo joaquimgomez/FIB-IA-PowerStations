@@ -57,12 +57,6 @@ public class CentralsRepresentation {
 
         } else {
 
-<<<<<<< Updated upstream
         }
-
     }
-
-
-=======
->>>>>>> Stashed changes
 }
