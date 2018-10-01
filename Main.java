@@ -1,4 +1,5 @@
 import src.*;
+import src.CentralsRepresentation.*;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
@@ -7,13 +8,16 @@ import aima.search.informed.SimulatedAnnealingSearch;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception {
 
-        CentralsRepresentation r = new CentralsRepresentation(/*FALTAN PARAMETROS*/);
+        CentralsRepresentation r = new CentralsRepresentation(10, 10, TipoSolucionInicial.Random);
 
-        if (Integer.parseInt(args[1]) == 1)   CentralsHillClimbing(r);
-        else    CentralsSimulatedAnnealing(r);
-
+        if (Integer.parseInt(args[1]) == 1) {
+            CentralsHillClimbing(r);
+        }
+        else {
+            CentralsSimulatedAnnealing(r);
+        }
     }
 
     private static void CentralsHillClimbing(CentralsRepresentation r){
