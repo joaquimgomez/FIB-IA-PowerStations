@@ -26,8 +26,8 @@ public class CentralsRepresentation {
     /* Constructor */
     public CentralsRepresentation(int numMaxCentrals, int numClients, TipoSolucionInicial tipSolInit) throws Exception {
 
-        numMaxCentrals = numMaxCentrals;
-        numClients = numClients;
+        this.numMaxCentrals = numMaxCentrals;
+        this.numClients = numClients;
 
         int [] propCentrals = new int[3];
         for (int i = 0; i < propCentrals.length; i++) {

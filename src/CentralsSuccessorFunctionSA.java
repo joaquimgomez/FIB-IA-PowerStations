@@ -8,7 +8,9 @@ import java.util.*;
 public class CentralsSuccessorFunctionSA implements SuccessorFunction {
 
     public List getSuccessors(Object eState) {
+
         return new ArrayList();
+
     }
 
 }
