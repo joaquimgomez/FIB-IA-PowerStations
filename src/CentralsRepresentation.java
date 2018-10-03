@@ -15,19 +15,14 @@ public class CentralsRepresentation {
     }
 
     // Static members
-    private static int numMaxCentrals;
-    private static int numClients;
     private static ArrayList<Central> centrals;
     private static ArrayList<Cliente> clients;
 
     // Representation
-    private Vector<Integer> representation;
+    private int[] representation;
 
     /* Constructor */
     public CentralsRepresentation(int numMaxCentrals, int numClients, TipoSolucionInicial tipSolInit) throws Exception {
-
-        this.numMaxCentrals = numMaxCentrals;
-        this.numClients = numClients;
 
         int [] propCentrals = new int[3];
         for (int i = 0; i < propCentrals.length; i++) {
@@ -44,7 +39,7 @@ public class CentralsRepresentation {
 
         centrals = new Centrales(propCentrals, 0);
         clients = new Clientes(numClients, propClients, propClientsGuaranteed, 0);
-        representation = new Vector<Integer>(clients.size());
+        representation = new int [clients.size()];
 
         fillInitialSolution(tipSolInit);
     }
@@ -57,17 +52,24 @@ public class CentralsRepresentation {
     /* */
     private void fillInitialSolution(TipoSolucionInicial tipSolInit) {
 
-        if(tipSolInit == TipoSolucionInicial.Random){
-
+        if (tipSolInit == TipoSolucionInicial.Random) {
+            fillRandom();
         }
-        else if (tipSolInit == TipoSolucionInicial.Prioritarios){
-
+        else if (tipSolInit == TipoSolucionInicial.Prioritarios) {
+            // fill____();
         }
         else if (tipSolInit == TipoSolucionInicial.Todos) {
-
+            // fill____();
         }
         else {
             System.out.println("Error parsing initial solution");
+        }
+    }
+
+    private void fillRandom() {
+        for (int i = 0; i < clients.size(); i++) {
+            int randCentral = IAUtils.random(0, centrals.size());
+            representation[i] = randCentral;
         }
     }
 }
