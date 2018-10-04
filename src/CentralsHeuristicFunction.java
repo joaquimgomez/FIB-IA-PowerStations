@@ -11,16 +11,21 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 
 	}
 
-	public double getHeuristicValue(Object state){
-		CentralsRepresentation s = (CentralsRepresentation) state;
+	public double getHeuristicValue(Object s) {
+		CentralsRepresentation state = (CentralsRepresentation) s;
 		double beneficio = 0.0;
 
 		// Cálculo del beneficio con las conexiones del estado actual s
+		for (int cliente : state.representationClientes) {
+
+		}
 
 		return beneficio;
 	}
 
-	private double getPorcentaje(int distSquared) {
+	/// @pre: distSquare es la distancia entre la central y el cliente, al cuadrado (es más fácil de computar)
+	/// @post: devuelve el porcentaje de pérdida (0 = 0% , 1.0 = 100%)
+	private static double getPorcentaje(int distSquared) {
 		if (distSquared <= 100) {  // 10^2
 			return 0;
 		}
@@ -40,7 +45,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 
 	/// @pre: La central está en marcha.
 	/// @post: Devuelve el coste "money" de una central al producir para un cliente.
-	private double getCoste(Central central, Cliente cliente) {
+	public static double getCoste(Central central, Cliente cliente) {
 
 		double coste = 0.0;
 
@@ -67,5 +72,15 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		}
 
 		return Double.POSITIVE_INFINITY;
+	}
+
+	/// @post: Devuelve el beneficio de servir al cliente, en euros
+	private static double getBeneficio(Cliente cliente) {
+		return (40 - cliente.getContrato() * (10) + cliente.getTipo() * 10) * cliente.getConsumo();
+	}
+
+	/// @post: Devuelve el coste de la indemnizacion por no servir al cliente, en euros
+	private static double getIndemnizacion(Cliente cliente) {
+		return cliente.getConsumo() * 5;
 	}
 }

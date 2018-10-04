@@ -1,5 +1,6 @@
 package src;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -19,7 +20,8 @@ public class CentralsRepresentation {
     private static ArrayList<Cliente> clients;
 
     // Representation
-    private int[] representation;
+    public int[] representationClientes;
+    public int[] representationCentrales;
 
     /* Constructor */
     public CentralsRepresentation(int numMaxCentrals, int numClients, TipoSolucionInicial tipSolInit) throws Exception {
@@ -39,14 +41,18 @@ public class CentralsRepresentation {
 
         centrals = new Centrales(propCentrals, 0);
         clients = new Clientes(numClients, propClients, propClientsGuaranteed, 0);
-        representation = new int [clients.size()];
+        representationClientes = new int [clients.size()];
+        representationCentrales = new int [centrals.size()];
+        Arrays.fill(representationClientes, -1);
+        Arrays.fill(representationCentrales, 0);
 
         fillInitialSolution(tipSolInit);
     }
 
     /* Constructor per copy */
     public CentralsRepresentation(CentralsRepresentation copy) {
-        this.representation = copy.representation;
+        this.representationClientes = copy.representationClientes;
+        this.representationCentrales = copy.representationCentrales;
     }
 
     /* */
@@ -67,9 +73,18 @@ public class CentralsRepresentation {
     }
 
     private void fillRandom() {
+
         for (int i = 0; i < clients.size(); i++) {
+
             int randCentral = IAUtils.random(0, centrals.size());
-            representation[i] = randCentral;
+            Central central = centrals.get(randCentral);
+            Cliente cliente = clients.get(i);
+            double coste = CentralsHeuristicFunction.getCoste(, clients.get(i));
+
+            if (CentralsHeuristicFunction.canAssign(centrals.get(randCentral), coste)) {
+                representationClientes[i] = randCentral;
+                representationCentrales[randCentral] += coste;
+            }
         }
     }
 }

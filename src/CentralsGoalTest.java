@@ -6,7 +6,8 @@ public class CentralsGoalTest implements GoalTest {
 
 	public boolean isGoalState(Object eState) {
 
-		return false; // En búsqued local desconocemos el estado final, por lo tanto siempre devuelve false
+		// En búsqued local desconocemos el estado final, por lo tanto siempre devuelve false
+		return true;
 
 	}
 	
