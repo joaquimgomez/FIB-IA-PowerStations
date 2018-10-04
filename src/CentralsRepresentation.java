@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 import IA.Energia.*;
 
+import static IA.Energia.Cliente.GARANTIZADO;
+
 public class CentralsRepresentation {
 
     // Auxiliary Data Structures
@@ -62,10 +64,10 @@ public class CentralsRepresentation {
             fillRandom();
         }
         else if (tipSolInit == TipoSolucionInicial.Prioritarios) {
-            // fill____();
+            fillPrioritary();
         }
         else if (tipSolInit == TipoSolucionInicial.Todos) {
-            // fill____();
+            fillAllClients();
         }
         else {
             System.out.println("Error parsing initial solution");
@@ -79,12 +81,43 @@ public class CentralsRepresentation {
             int randCentral = IAUtils.random(0, centrals.size());
             Central central = centrals.get(randCentral);
             Cliente cliente = clients.get(i);
-            double coste = CentralsHeuristicFunction.getCoste(, clients.get(i));
+            double coste = CentralsHeuristicFunction.getCoste(central, cliente);
 
             if (CentralsHeuristicFunction.canAssign(centrals.get(randCentral), coste)) {
                 representationClientes[i] = randCentral;
                 representationCentrales[randCentral] += coste;
             }
         }
+    }
+
+    private void fillPrioritary(){
+        int currentCentral = 0;
+        for (int i = 0; i < clients.size() && currentCentral <= centrals.size(); i++){
+            if (clients.get(i).getTipo() == Cliente.GARANTIZADO) {
+                if (canAssign(centrals.get(currentCentral))){
+                    assignation(i, currentCentral);
+                } else {
+                    i++;
+                    assignation(i, currentCentral);
+                }
+            }
+        }
+    }
+
+    private void fillAllClients(){
+        int currentCentral = 0;
+        for (int i = 0; i < clients.size() && currentCentral <= centrals.size(); i++){
+            if (canAssign(centrals.get(currentCentral))){
+                assignation(i, currentCentral);
+            } else {
+                i++;
+                assignation(i, currentCentral);
+            }
+        }
+    }
+
+    private void assignation(int client, int central){
+        representationClientes[client] = central;
+        representationCentrales[central] += clients.get(client).getConsumo();
     }
 }
