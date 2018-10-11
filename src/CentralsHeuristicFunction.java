@@ -16,39 +16,9 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		CentralsRepresentation state = (CentralsRepresentation) s;
 		double beneficio = 0.0;
 
-		// Cálculo del beneficio con las conexiones del estado actual s
-		for (int clientID = 0; clientID < state.representationClientes.length; clientID++) {
+		
 
-			int centralAssigned = state.representationClientes[clientID];
-
-			System.out.print(centralAssigned);
-			System.out.print(' ');
-
-			Cliente cli = CentralsRepresentation.clients.get(clientID);
-			//beneficio += getBeneficio(cli);
-			beneficio += centralAssigned;
-		}
-
-		System.out.print('\n');
-
-		for (int centralID = 0; centralID < state.representationCentrales.length; centralID++) {
-
-			double consumo = state.representationCentrales[centralID];
-
-			System.out.print(consumo);
-			System.out.print(' ');
-
-			if (consumo != 0) {
-				Central cen = CentralsRepresentation.centrals.get(centralID);
-				//beneficio -= getCosteEuros(cen);
-			}
-		}
-
-		System.out.print('\n');
-
-		System.out.println("Heuristic = " + beneficio);
-
-		return beneficio;
+		return -beneficio;
 	}
 
 	/// @pre: distSquare es la distancia entre la central y el cliente, al cuadrado (es más fácil de computar)

@@ -1,9 +1,7 @@
 package src;
 
 import java.util.Arrays;
-import java.util.Random;
 import java.util.ArrayList;
-import java.util.Vector;
 import IA.Energia.*;
 
 import static IA.Energia.Cliente.GARANTIZADO;
@@ -37,7 +35,7 @@ public class CentralsRepresentation {
 
         double [] propClients = new double[3];
         Arrays.fill(propClients, 0.0);
-        for (int i = 0; i < propClients.length - 1; i++) {
+        for (int i = 0; i < numClients; i++) {
             int tipo = IAUtils.random(0, 3);
             propClients[tipo]++;
         }
@@ -59,8 +57,8 @@ public class CentralsRepresentation {
 
     /* Constructor per copy */
     public CentralsRepresentation(CentralsRepresentation copy) {
-        this.representationClientes = copy.representationClientes;
-        this.representationCentrales = copy.representationCentrales;
+        this.representationClientes = copy.representationClientes.clone();
+        this.representationCentrales = copy.representationCentrales.clone();
     }
 
     /* */
