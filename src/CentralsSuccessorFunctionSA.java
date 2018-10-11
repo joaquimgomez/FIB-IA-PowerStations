@@ -9,6 +9,8 @@ public class CentralsSuccessorFunctionSA implements SuccessorFunction {
 
     public List getSuccessors(Object eState) {
 
+
+        System.out.println("SA only");
         return new ArrayList();
 
     }

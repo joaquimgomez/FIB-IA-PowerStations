@@ -12,13 +12,41 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 	}
 
 	public double getHeuristicValue(Object s) {
+
 		CentralsRepresentation state = (CentralsRepresentation) s;
 		double beneficio = 0.0;
 
 		// Cálculo del beneficio con las conexiones del estado actual s
-		for (int cliente : state.representationClientes) {
+		for (int clientID = 0; clientID < state.representationClientes.length; clientID++) {
 
+			int centralAssigned = state.representationClientes[clientID];
+
+			System.out.print(centralAssigned);
+			System.out.print(' ');
+
+			Cliente cli = CentralsRepresentation.clients.get(clientID);
+			//beneficio += getBeneficio(cli);
+			beneficio += centralAssigned;
 		}
+
+		System.out.print('\n');
+
+		for (int centralID = 0; centralID < state.representationCentrales.length; centralID++) {
+
+			double consumo = state.representationCentrales[centralID];
+
+			System.out.print(consumo);
+			System.out.print(' ');
+
+			if (consumo != 0) {
+				Central cen = CentralsRepresentation.centrals.get(centralID);
+				//beneficio -= getCosteEuros(cen);
+			}
+		}
+
+		System.out.print('\n');
+
+		System.out.println("Heuristic = " + beneficio);
 
 		return beneficio;
 	}
@@ -43,11 +71,8 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		}
 	}
 
-	/// @pre: La central está en marcha.
-	/// @post: Devuelve el coste "money" de una central al producir para un cliente.
-	public static double getCoste(Central central, Cliente cliente) {
-
-		double coste = 0.0;
+	/// @post: Devuelve los MW que consume un cliente para una central.
+	public static double getConsumo(Central central, Cliente cliente) {
 
 		// Get porcentaje
 		int x = central.getCoordX() - cliente.getCoordX();
@@ -56,25 +81,30 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		double porcentaje = getPorcentaje(d);
 
 		// Calcular produccion para el cliente
-		double consumo = cliente.getConsumo() * (porcentaje + 1);
+		return cliente.getConsumo() * (porcentaje + 1.0);
+	}
+
+	/// @pre: La central está en marcha.
+	/// @post: Devuelve el coste "money" de encender una central.
+	public static double getCosteEuros(Central central) {
 
 		// Calcular producción de la central
-		double produccion = central.getProduccion() + consumo;
+		double produccion = central.getProduccion();
 
 		// Calcular coste de la producción total
 		switch (central.getTipo()) {
-			case 'A':
+			case 0:
 				return produccion * 5 + 2000;
-			case 'B':
+			case 1:
 				return produccion * 8 + 1000;
-			case 'C':
+			case 2:
 				return produccion * 15 + 500;
 		}
 
 		return Double.POSITIVE_INFINITY;
 	}
 
-	/// @post: Devuelve el beneficio de servir al cliente, en euros
+	/// @post: Devuelve el beneficio de servir al cliente, en euros.
 	private static double getBeneficio(Cliente cliente) {
 		return (40 - cliente.getContrato() * (10) + cliente.getTipo() * 10) * cliente.getConsumo();
 	}
