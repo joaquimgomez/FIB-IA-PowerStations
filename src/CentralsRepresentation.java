@@ -26,23 +26,27 @@ public class CentralsRepresentation {
     public double[] representationCentrales;
 
     /* Constructor */
-    public CentralsRepresentation(int numMaxCentrals, int numClients, TipoSolucionInicial tipSolInit) throws Exception {
+    public CentralsRepresentation(int numCentrals, int numClients, TipoSolucionInicial tipSolInit) throws Exception {
 
         int [] propCentrals = new int[3];
-        for (int i = 0; i < propCentrals.length; i++) {
-            propCentrals[i] = IAUtils.random(1, numMaxCentrals / 3);
+        Arrays.fill(propCentrals, 0);
+        for (int central = 0; central < numCentrals; central++) {
+            int tipo = IAUtils.random(0, 3);
+            propCentrals[tipo]++;
         }
 
         double [] propClients = new double[3];
+        Arrays.fill(propClients, 0.0);
         for (int i = 0; i < propClients.length - 1; i++) {
-            propClients[i] = IAUtils.random(0.1, 0.5);
+            int tipo = IAUtils.random(0, 3);
+            propClients[tipo]++;
         }
-        propClients[2] = 1.0 - propClients[0] - propClients[1];
 
         double propClientsGuaranteed = IAUtils.random();
+        double [] proporcionClientes = new double[] {propClients[0] / numClients, propClients[1] / numClients, propClients[2] / numClients};
 
         centrals = new Centrales(propCentrals, 0);
-        clients = new Clientes(numClients, propClients, propClientsGuaranteed, 0);
+        clients = new Clientes(numClients, proporcionClientes, propClientsGuaranteed, 0);
         representationClientes = new int [clients.size()];
         representationCentrales = new double [centrals.size()];
         Arrays.fill(representationClientes, -1);
