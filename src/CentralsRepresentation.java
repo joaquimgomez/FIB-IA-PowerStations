@@ -33,15 +33,22 @@ public class CentralsRepresentation {
             propCentrals[tipo]++;
         }
 
-        double [] propClients = new double[3];
-        Arrays.fill(propClients, 0.0);
+        int [] propClients = new int[3];
+        Arrays.fill(propClients, 0);
         for (int i = 0; i < numClients; i++) {
             int tipo = IAUtils.random(0, 3);
             propClients[tipo]++;
         }
 
         double propClientsGuaranteed = IAUtils.random();
-        double [] proporcionClientes = new double[] {propClients[0] / numClients, propClients[1] / numClients, propClients[2] / numClients};
+        double [] proporcionClientes = new double[] {
+                (double)propClients[0] / (double)numClients,
+                (double)propClients[1] / (double)numClients,
+                (double)propClients[2] / (double)numClients
+        };
+        if (proporcionClientes[0] + proporcionClientes[1] + proporcionClientes[2] != 1.0D) {
+            proporcionClientes[2] = 1.0D - (proporcionClientes[0] + proporcionClientes[1]);
+        }
 
         centrals = new Centrales(propCentrals, 0);
         clients = new Clientes(numClients, proporcionClientes, propClientsGuaranteed, 0);
