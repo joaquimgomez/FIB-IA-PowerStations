@@ -1,3 +1,4 @@
+import aima.search.framework.Successor;
 import src.*;
 
 import java.util.Iterator;
@@ -16,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        CentralsRepresentation r = new CentralsRepresentation(10, 100, TipoSolucionInicial.Prioritarios);
+        CentralsRepresentation r = new CentralsRepresentation(40, 1000, TipoSolucionInicial.Prioritarios);
 
         //CentralsHillClimbing(r);
         CentralsSimulatedAnnealing(r);

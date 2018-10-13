@@ -34,12 +34,15 @@ public class CentralsSuccessorFunctionSA implements SuccessorFunction {
             }
 
             if (assigned){
-                double h = hF.getHeuristicValue(newRepresentation);
-                String S = "Heuristico: " + h;
-                retVal.add(new Successor(S, newRepresentation));
+                //double h = hF.getHeuristicValue(newRepresentation);
+                String S = "Heuristico: ";
+                Successor s = new Successor(S, newRepresentation);
+                retVal.add(s);
             }
 
         }
+
+        System.out.println("nSucc = " + retVal.size());
 
         return retVal;
     }

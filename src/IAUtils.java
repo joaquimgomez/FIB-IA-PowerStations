@@ -14,7 +14,7 @@ public class IAUtils {
 
     // Random
     public static double random() {
-        return (Math.random());
+        return Math.random();
     }
 
     public static int random(int min, int max) {
@@ -23,6 +23,15 @@ public class IAUtils {
 
     public static double random(double min, double max) {
         return Math.random() * (max - min) + min;
+    }
+
+
+    public static void printState(CentralsRepresentation state) {
+        for (int client = 0; client < state.representationClientes.length; client++) {
+            System.out.print(state.representationClientes[client]);
+            System.out.print(' ');
+        }
+        System.out.print('\n');
     }
 
 }
