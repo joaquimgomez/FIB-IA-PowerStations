@@ -40,7 +40,7 @@ public class Main {
                     new CentralsSuccessorFunctionSA(),
                     new CentralsGoalTest(),
                     new CentralsHeuristicFunction());
-            SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(100,10,15,0.1);
+            SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(2000,100,5,0.001D);
             SearchAgent agent = new SearchAgent(problem, search);
 
             printActions(agent.getActions());
@@ -51,9 +51,9 @@ public class Main {
     }
 
     private static void printActions(List actions) {
-        for (int i = 0; i < actions.size(); i++) {
-            //String action = (String) actions.get(i);
-            //System.out.println(action);
+        for (int i = 0; i < actions.size(); ++i) {
+            String action = (String)actions.get(i);
+            System.out.println(action);
         }
     }
 

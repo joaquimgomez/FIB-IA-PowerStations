@@ -1,6 +1,5 @@
 package src;
 
-import src.CentralsHeuristicFunction;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 import java.util.*;
@@ -12,7 +11,7 @@ public class CentralsSuccessorFunctionSA implements SuccessorFunction {
     }
 
     public List getSuccessors(Object eState) {
-        ArrayList retVal = new ArrayList();
+        ArrayList retVal = new ArrayList ();
         CentralsRepresentation r = (CentralsRepresentation)eState;
         CentralsHeuristicFunction hF = new CentralsHeuristicFunction();
 
@@ -36,7 +35,8 @@ public class CentralsSuccessorFunctionSA implements SuccessorFunction {
 
             if (assigned){
                 double h = hF.getHeuristicValue(newRepresentation);
-                retVal.add(new Successor("caca", newRepresentation));
+                String S = "Heuristico: " + h;
+                retVal.add(new Successor(S, newRepresentation));
             }
 
         }
