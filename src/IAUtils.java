@@ -13,8 +13,8 @@ public class IAUtils {
 
 
     // Random
-    public static int random() {
-        return (int)(Math.random());
+    public static double random() {
+        return (Math.random());
     }
 
     public static int random(int min, int max) {

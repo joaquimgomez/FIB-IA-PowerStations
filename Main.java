@@ -18,12 +18,8 @@ public class Main {
 
         CentralsRepresentation r = new CentralsRepresentation(10, 100, TipoSolucionInicial.Prioritarios);
 
-        //if (Integer.parseInt(args[1]) == 1) {
-            CentralsHillClimbing(r);
-        //}
-        //else {
-        //    CentralsSimulatedAnnealing(r);
-        //}
+        //CentralsHillClimbing(r);
+        CentralsSimulatedAnnealing(r);
     }
 
     private static void CentralsHillClimbing(CentralsRepresentation r) throws Exception {
@@ -44,7 +40,7 @@ public class Main {
                     new CentralsSuccessorFunctionSA(),
                     new CentralsGoalTest(),
                     new CentralsHeuristicFunction());
-            SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(/* PARAMETROS */);
+            SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(100,10,15,0.1);
             SearchAgent agent = new SearchAgent(problem, search);
 
             printActions(agent.getActions());
@@ -56,8 +52,8 @@ public class Main {
 
     private static void printActions(List actions) {
         for (int i = 0; i < actions.size(); i++) {
-            String action = (String) actions.get(i);
-            System.out.println(action);
+            //String action = (String) actions.get(i);
+            //System.out.println(action);
         }
     }
 
