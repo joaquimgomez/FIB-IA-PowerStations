@@ -154,6 +154,9 @@ public class CentralsRepresentation {
                     currentCentral++;
                 }
             }
+            else {
+                currentClient++;
+            }
         }
     }
 
