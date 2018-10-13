@@ -52,9 +52,9 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 			if (centralAssigned == -1 && typeClient == NOGARANTIZADO){
 				beneficio -= VEnergia.getTarifaClientePenalizacion(client.getContrato()); //???????????'
 			} else if (typeClient == NOGARANTIZADO){
-				beneficio += VEnergia.getTarifaClienteNoGarantizada(client.getContrato());
+				beneficio += VEnergia.getTarifaClienteNoGarantizada(client.getContrato())*client.getConsumo();
 			} else if (typeClient == GARANTIZADO){
-				beneficio += VEnergia.getTarifaClienteGarantizada(client.getContrato());
+				beneficio += VEnergia.getTarifaClienteGarantizada(client.getContrato())*client.getConsumo();
 
 			}
 		}
