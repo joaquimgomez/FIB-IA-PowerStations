@@ -3,20 +3,63 @@ package src;
 import aima.search.framework.HeuristicFunction;
 import IA.Energia.Central;
 import IA.Energia.Cliente;
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
+import IA.Energia.VEnergia;
+import java.lang.Exception;
+
+import static IA.Energia.Cliente.GARANTIZADO;
+import static IA.Energia.Cliente.NOGARANTIZADO;
 
 public class CentralsHeuristicFunction implements HeuristicFunction {
 
+	// Members
+	public static VEnergia VEnergia = new VEnergia();
+
+	// Constructor
 	public CentralsHeuristicFunction() {
 
 	}
 
 	public double getHeuristicValue(Object s) {
+		try {
+			CentralsRepresentation state = (CentralsRepresentation) s;
+			return HeuristicFunction1(state);
+		}
+		catch (Exception excepcion){
+			System.out.println("Error: " + excepcion);
+		}
+		return 0.0;
+	}
 
-		CentralsRepresentation state = (CentralsRepresentation) s;
+	public double HeuristicFunction1(CentralsRepresentation state) throws Exception {
 		double beneficio = 0.0;
 
-		
+		for (int centralID = 0; centralID < state.representationCentrales.length; centralID++){
+			int typeCentral = state.centrals.get(centralID).getTipo();
+
+			if (state.representationCentrales[centralID] != 0){		// Coste central en marcha
+				beneficio -= VEnergia.getCosteMarcha(typeCentral);
+				beneficio -= VEnergia.getCosteProduccionMW(typeCentral);
+			} else {	// Coste central en parada
+				beneficio -= VEnergia.getCosteParada(typeCentral);
+			}
+		}
+
+		for (int clientID = 0; clientID < state.representationClientes.length; clientID++){
+			int centralAssigned = state.representationClientes[clientID];
+			Cliente client = state.clients.get(clientID);
+			int typeClient = client.getTipo();
+
+			if (centralAssigned == -1 && typeClient == NOGARANTIZADO){
+				beneficio -= VEnergia.getTarifaClientePenalizacion(client.getContrato()); //???????????'
+			} else if (typeClient == NOGARANTIZADO){
+				beneficio += VEnergia.getTarifaClienteNoGarantizada(client.getContrato());
+			} else if (typeClient == GARANTIZADO){
+				beneficio += VEnergia.getTarifaClienteGarantizada(client.getContrato());
+
+			}
+		}
+
+		System.out.println(beneficio);
 
 		return -beneficio;
 	}
