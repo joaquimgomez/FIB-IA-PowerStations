@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        CentralsRepresentation r = new CentralsRepresentation(10, 100, TipoSolucionInicial.Random);
+        CentralsRepresentation r = new CentralsRepresentation(10, 100, TipoSolucionInicial.Prioritarios);
 
         //if (Integer.parseInt(args[1]) == 1) {
             CentralsHillClimbing(r);

@@ -50,7 +50,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 			int typeClient = client.getTipo();
 
 			if (centralAssigned == -1 && typeClient == NOGARANTIZADO){
-				beneficio -= VEnergia.getTarifaClientePenalizacion(client.getContrato()); //???????????'
+				beneficio -= VEnergia.getTarifaClientePenalizacion(client.getContrato())*client.getConsumo(); //???????????'
 			} else if (typeClient == NOGARANTIZADO){
 				beneficio += VEnergia.getTarifaClienteNoGarantizada(client.getContrato())*client.getConsumo();
 			} else if (typeClient == GARANTIZADO){
@@ -59,7 +59,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 			}
 		}
 
-		System.out.println(beneficio);
+		// System.out.println(beneficio);
 
 		return -beneficio;
 	}
@@ -94,7 +94,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		double porcentaje = getPorcentaje(d);
 
 		// Calcular produccion para el cliente
-		return cliente.getConsumo() * (porcentaje + 1.0);
+		return cliente.getConsumo() * (porcentaje + 1.0D);
 	}
 
 	/// @pre: La central está en marcha.

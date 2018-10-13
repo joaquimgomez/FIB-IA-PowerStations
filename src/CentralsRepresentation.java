@@ -100,6 +100,7 @@ public class CentralsRepresentation {
         }
     }
 
+    // clientID: central_old -> central_new
     public void assign(int centralID_old, int clientID, int centralID_new) {
 
         Central cenOld;
@@ -123,6 +124,49 @@ public class CentralsRepresentation {
         }
 
         representationClientes[clientID] = centralID_new;
+    }
+
+    public boolean canSwap(int clientID_old, int clientID_new) {
+
+        Cliente cliente_old = clients.get(clientID_old);
+        Cliente cliente_new = clients.get(clientID_new);
+
+        int centralID_old = representationClientes[clientID_old];
+        int centralID_new = representationClientes[clientID_new];
+
+        if (centralID_old == centralID_new) {
+            return false;
+        }
+
+        Central central_old = centralID_old != -1 ? centrals.get(centralID_old) : null;
+        Central central_new = centralID_new != -1 ? centrals.get(centralID_new) : null;
+
+        double consumo_old_old = central_old != null ? CentralsHeuristicFunction.getConsumo(central_old, cliente_old) : 0.0d;
+        double consumo_new_old = central_new != null ? CentralsHeuristicFunction.getConsumo(central_new, cliente_old) : 0.0d;
+        double consumo_old_new = central_old != null ? CentralsHeuristicFunction.getConsumo(central_old, cliente_new) : 0.0d;
+        double consumo_new_new = central_new != null ? CentralsHeuristicFunction.getConsumo(central_new, cliente_new) : 0.0d;
+
+        if (central_old != null && (representationCentrales[centralID_old] - consumo_old_old + consumo_new_old) > central_old.getProduccion()) {
+            return false;
+        }
+
+        if (central_new != null && (representationCentrales[centralID_new] - consumo_new_new + consumo_old_new) > central_new.getProduccion()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    // clientID_old: central_old -> central_new && clientID_new: central_new -> central_old
+    public void swap(int clientID_old, int clientID_new) {
+
+        int central_old = representationClientes[clientID_old];
+        int central_new = representationClientes[clientID_new];
+
+        if (canSwap(clientID_old, clientID_new)) {
+            assign(central_old, clientID_old, central_new);
+            assign(central_new, clientID_new, central_old);
+        }
     }
 
     // Soluciones Iniciales
