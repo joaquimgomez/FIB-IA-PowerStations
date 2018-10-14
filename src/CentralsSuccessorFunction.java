@@ -24,6 +24,12 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 				if (state.canAssign(centralID_new, clientID_old)) {
 					CentralsRepresentation succ = new CentralsRepresentation(state);
 					succ.assign(centralID_old, clientID_old, centralID_new);
+
+					succ.central_new = centralID_new;
+					succ.central_old = centralID_old;
+					succ.cliente_old = clientID_old;
+					succ.cliente_new = -1;
+
 					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new, succ);
 
 					// System.out.println(successor.getAction());
@@ -43,6 +49,12 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 
 					CentralsRepresentation succ = new CentralsRepresentation(state);
 					succ.swap(clientID_old, clientID_new);
+
+					succ.central_new = centralID_new;
+					succ.central_old = centralID_old;
+					succ.cliente_old = clientID_old;
+					succ.cliente_new = clientID_new;
+
 					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new +
 							", " + clientID_new + ": " + centralID_new + " -> " + centralID_old, succ);
 

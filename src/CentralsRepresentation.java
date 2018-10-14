@@ -30,7 +30,7 @@ public class CentralsRepresentation {
     public double entropia;
     public int central_old;
     public int central_new;
-    public int cliente_old
+    public int cliente_old;
     public int cliente_new;
 
 
