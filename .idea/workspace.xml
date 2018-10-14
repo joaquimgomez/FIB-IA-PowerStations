@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e3aa1c-672a-480d-8b04-d62b58fdebec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CentralsSuccessorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralsSuccessorFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java" afterDir="false" />
     </list>
@@ -77,14 +75,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="class" value="1" />
-          <entry key="java" value="6730" />
+          <entry key="java" value="6822" />
           <entry key="vmoptions" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="6730" />
+          <entry key="JAVA" value="6822" />
           <entry key="PLAIN_TEXT" value="9" />
         </counts>
       </usages-collector>
@@ -107,10 +105,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CentralsHeuristicFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
+            <state relative-caret-position="-242">
               <caret line="49" column="85" selection-start-line="49" selection-start-column="85" selection-end-line="49" selection-end-column="85" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -162,11 +160,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="555">
-              <caret line="37" column="66" lean-forward="true" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
+              <caret line="49" column="53" lean-forward="true" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -203,10 +201,10 @@
         <option value="$PROJECT_DIR$/src/CentralsGoalTest.java" />
         <option value="$APPLICATION_CONFIG_DIR$/idea.vmoptions" />
         <option value="$PROJECT_DIR$/Main.java" />
-        <option value="$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java" />
         <option value="$PROJECT_DIR$/src/CentralsSuccessorFunction.java" />
         <option value="$PROJECT_DIR$/src/CentralsRepresentation.java" />
         <option value="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" />
+        <option value="$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java" />
       </list>
     </option>
   </component>
@@ -270,16 +268,6 @@
             <path>
               <item name="energIA" type="b2602c69:ProjectViewProjectNode" />
               <item name="energIA" type="462c0819:PsiDirectoryNode" />
-              <item name="aima" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="energIA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="energIA" type="462c0819:PsiDirectoryNode" />
-              <item name="Central" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="energIA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="energIA" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -289,7 +277,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539524866333" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539526215259" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
@@ -334,7 +322,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="947" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22222222" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -509,16 +496,6 @@
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/idea.vmoptions" />
-    <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="66" lean-forward="true" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -558,8 +535,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CentralsHeuristicFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
+        <state relative-caret-position="-242">
           <caret line="49" column="85" selection-start-line="49" selection-start-column="85" selection-end-line="49" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="49" column="53" lean-forward="true" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
