@@ -67,6 +67,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 				if (state.hCentral_old == -1) { // fuera a dentro
 					if (c.getContrato() == Cliente.NOGARANTIZADO) {
 						state.beneficio += VEnergia.getTarifaClienteNoGarantizada(c.getTipo()) * c.getConsumo();
+						state.beneficio += VEnergia.getTarifaClientePenalizacion(c.getTipo()) * c.getConsumo();
 					}
 					else {
 						state.beneficio += VEnergia.getTarifaClienteGarantizada(c.getTipo()) * c.getConsumo();
@@ -107,6 +108,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		}
 
 		double heuristico = state.beneficio * (1.0D - (state.entropia / (double)CentralsRepresentation.clients.size()));
+		//System.out.println(heuristico);
 
 		return -heuristico;
 	}
