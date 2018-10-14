@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e3aa1c-672a-480d-8b04-d62b58fdebec" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,13 +32,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="10560" />
+          <entry key="java" value="10589" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="10560" />
+          <entry key="JAVA" value="10589" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -107,12 +108,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CentralsHeuristicFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="48" column="84" selection-start-line="48" selection-start-column="84" selection-end-line="48" selection-end-column="84" />
+            <state relative-caret-position="570">
+              <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2286#2287#0" expanded="true" />
-                <element signature="e#2324#2325#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,18 +132,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CentralsRepresentation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2580">
+            <state relative-caret-position="3720">
               <caret line="281" column="34" lean-forward="true" selection-start-line="281" selection-start-column="34" selection-end-line="281" selection-end-column="34" />
               <folding>
                 <element signature="method#CentralsRepresentation#1;class#CentralsRepresentation#0" />
                 <element signature="method#fillInitialSolution#0;class#CentralsRepresentation#0" />
                 <element signature="method#canAssign#0;class#CentralsRepresentation#0" />
-                <element signature="method#canSwap#0;class#CentralsRepresentation#0" />
-                <element signature="method#fillRandom#0;class#CentralsRepresentation#0" />
-                <element signature="method#fillPrioritary#0;class#CentralsRepresentation#0" />
-                <element signature="method#fillAllClients#0;class#CentralsRepresentation#0" />
-                <element signature="method#setBeneficio#0;class#CentralsRepresentation#0" />
-                <element signature="method#setEntropia#0;class#CentralsRepresentation#0" />
               </folding>
             </state>
           </provider>
@@ -277,7 +270,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539518212633" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539518403163" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
@@ -506,16 +499,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CentralsRepresentation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2580">
+        <state relative-caret-position="3720">
           <caret line="281" column="34" lean-forward="true" selection-start-line="281" selection-start-column="34" selection-end-line="281" selection-end-column="34" />
           <folding>
             <element signature="method#CentralsRepresentation#1;class#CentralsRepresentation#0" />
             <element signature="method#fillInitialSolution#0;class#CentralsRepresentation#0" />
             <element signature="method#canAssign#0;class#CentralsRepresentation#0" />
-            <element signature="method#canSwap#0;class#CentralsRepresentation#0" />
-            <element signature="method#fillRandom#0;class#CentralsRepresentation#0" />
-            <element signature="method#fillPrioritary#0;class#CentralsRepresentation#0" />
-            <element signature="method#fillAllClients#0;class#CentralsRepresentation#0" />
           </folding>
         </state>
       </provider>
@@ -542,12 +531,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CentralsHeuristicFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="48" column="84" selection-start-line="48" selection-start-column="84" selection-end-line="48" selection-end-column="84" />
+        <state relative-caret-position="570">
+          <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getCosteEuros#0;class#CentralsHeuristicFunction#0" />
-            <element signature="method#getBeneficio#0;class#CentralsHeuristicFunction#0" />
           </folding>
         </state>
       </provider>
