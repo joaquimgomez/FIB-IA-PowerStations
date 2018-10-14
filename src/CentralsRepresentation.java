@@ -116,7 +116,7 @@ public class CentralsRepresentation {
         else {
             Central central = centrals.get(centralID);
 
-            double consumo = CentralsHeuristicFunction.getConsumo(central, cliente);
+            double consumo = IAUtils.getConsumo(central, cliente);
             return representationCentrales[centralID] + consumo <= central.getProduccion();
         }
     }
@@ -134,13 +134,13 @@ public class CentralsRepresentation {
 
         if (centralID_old != -1) {
             cenOld = centrals.get(centralID_old);
-            consumoOld = CentralsHeuristicFunction.getConsumo(cenOld, client);
+            consumoOld = IAUtils.getConsumo(cenOld, client);
             representationCentrales[centralID_old] -= consumoOld;
         }
 
         if (centralID_new != -1) {
             cenNew = centrals.get(centralID_new);
-            consumoNew = CentralsHeuristicFunction.getConsumo(cenNew, client);
+            consumoNew = IAUtils.getConsumo(cenNew, client);
             representationCentrales[centralID_new] += consumoNew;
         }
 
@@ -162,10 +162,10 @@ public class CentralsRepresentation {
         Central central_old = centralID_old != -1 ? centrals.get(centralID_old) : null;
         Central central_new = centralID_new != -1 ? centrals.get(centralID_new) : null;
 
-        double consumo_old_old = central_old != null ? CentralsHeuristicFunction.getConsumo(central_old, cliente_old) : 0.0d;
-        double consumo_new_old = central_new != null ? CentralsHeuristicFunction.getConsumo(central_new, cliente_old) : 0.0d;
-        double consumo_old_new = central_old != null ? CentralsHeuristicFunction.getConsumo(central_old, cliente_new) : 0.0d;
-        double consumo_new_new = central_new != null ? CentralsHeuristicFunction.getConsumo(central_new, cliente_new) : 0.0d;
+        double consumo_old_old = central_old != null ? IAUtils.getConsumo(central_old, cliente_old) : 0.0d;
+        double consumo_new_old = central_new != null ? IAUtils.getConsumo(central_new, cliente_old) : 0.0d;
+        double consumo_old_new = central_old != null ? IAUtils.getConsumo(central_old, cliente_new) : 0.0d;
+        double consumo_new_new = central_new != null ? IAUtils.getConsumo(central_new, cliente_new) : 0.0d;
 
         if (central_old != null && (representationCentrales[centralID_old] - consumo_old_old + consumo_new_old) > central_old.getProduccion()) {
             return false;
@@ -286,7 +286,7 @@ public class CentralsRepresentation {
 
             int centralID = representationClientes[clienteID];
             if (centralID != -1) {
-                entropia += VEnergia.getPerdida(CentralsHeuristicFunction.getDistacia(centralID, clienteID));
+                entropia += VEnergia.getPerdida(IAUtils.getDistacia(centralID, clienteID));
             }
             else {
                 entropia += 1.0D;
