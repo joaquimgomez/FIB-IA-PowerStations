@@ -85,17 +85,17 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		if (state.hCliente_old != -1) { // no es la solución inicial
 
 			if (state.hCliente_new == -1) { // assign
-				double dist_old = IAUtils.getDistacia(state.hCentral_old, state.hCliente_old);
-				double dist_new = IAUtils.getDistacia(state.hCentral_new, state.hCliente_old);
+				double dist_old = state.hCentral_old != -1 ? IAUtils.getDistacia(state.hCentral_old, state.hCliente_old) : 0;
+				double dist_new = state.hCentral_new != -1 ? IAUtils.getDistacia(state.hCentral_new, state.hCliente_old) : 0;
 				double perdida_old = VEnergia.getPerdida(dist_old);
 				double perdida_new = VEnergia.getPerdida(dist_new);
 				state.entropia = state.entropia - perdida_old + perdida_new;
 			}
 			else {  // swap
-				double dist_old_old = IAUtils.getDistacia(state.hCentral_old, state.hCliente_old);
-				double dist_new_old = IAUtils.getDistacia(state.hCentral_new, state.hCliente_old);
-				double dist_old_new = IAUtils.getDistacia(state.hCentral_old, state.hCliente_new);
-				double dist_new_new = IAUtils.getDistacia(state.hCentral_new, state.hCliente_new);
+				double dist_old_old = state.hCentral_old != -1 ? IAUtils.getDistacia(state.hCentral_old, state.hCliente_old) : 0;
+				double dist_new_old = state.hCentral_new != -1 ? IAUtils.getDistacia(state.hCentral_new, state.hCliente_old) : 0;
+				double dist_old_new = state.hCentral_old != -1 ? IAUtils.getDistacia(state.hCentral_old, state.hCliente_new) : 0;
+				double dist_new_new = state.hCentral_new != -1 ? IAUtils.getDistacia(state.hCentral_new, state.hCliente_new) : 0;
 				double perdida_old_old = VEnergia.getPerdida(dist_old_old);
 				double perdida_new_old = VEnergia.getPerdida(dist_new_old);
 				double perdida_old_new = VEnergia.getPerdida(dist_old_new);
