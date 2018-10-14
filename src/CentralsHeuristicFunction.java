@@ -31,19 +31,19 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 
 			if (state.hCliente_new == -1) { // assign
 
-				if (state.representationCentrales[state.hCentral_old] == 0){ // se apaga una central old
+				if (state.hCentral_old != -1 && state.representationCentrales[state.hCentral_old] == 0){ // se apaga una central old
 					Central cent = CentralsRepresentation.centrals.get(state.hCentral_old);
                     state.beneficio += VEnergia.getCosteMarcha(cent.getTipo());
 					state.beneficio += VEnergia.getCosteProduccionMW(cent.getTipo());
 					state.beneficio -= VEnergia.getCosteParada(cent.getTipo());
 				}
-				if (state.representationCentrales[state.hCentral_new] == 0) {  // se apaga una central new
+				if (state.hCentral_new != -1 && state.representationCentrales[state.hCentral_new] == 0) {  // se apaga una central new
                     Central cent = CentralsRepresentation.centrals.get(state.hCentral_new);
 					state.beneficio += VEnergia.getCosteMarcha(cent.getTipo());
 					state.beneficio += VEnergia.getCosteProduccionMW(cent.getTipo());
 					state.beneficio -= VEnergia.getCosteParada(cent.getTipo());
 				}
-				if (state.representationCentrales[state.hCentral_new]
+				if (state.hCentral_new != -1 && state.representationCentrales[state.hCentral_new]
 						== CentralsRepresentation.clients.get(state.hCliente_old).getConsumo()) { // se enciende central
 					Central cent = CentralsRepresentation.centrals.get(state.hCentral_new);
 					state.beneficio -= VEnergia.getCosteMarcha(cent.getTipo());
@@ -64,7 +64,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 			if (state.hCliente_new == -1){ // assign
 				Cliente c = state.clients.get(state.hCliente_old);
 
-				if (state.hCentral_old == 1) { // fuera a dentro
+				if (state.hCentral_old == -1) { // fuera a dentro
 					if (c.getContrato() == Cliente.NOGARANTIZADO) {
 						state.beneficio += VEnergia.getTarifaClienteNoGarantizada(c.getTipo()) * c.getConsumo();
 					}

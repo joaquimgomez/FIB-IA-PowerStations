@@ -91,7 +91,6 @@ public class CentralsRepresentation {
         this.hCentral_new = copy.hCentral_new;
         this.hCliente_old = copy.hCliente_old;
         this.hCliente_new = copy.hCliente_new;
-
     }
 
     /* */
@@ -114,6 +113,10 @@ public class CentralsRepresentation {
     public boolean canAssign(int centralID, int clientID) {
 
         Cliente cliente = clients.get(clientID);
+
+        if (representationClientes[clientID] == centralID) {
+            return false;
+        }
 
         if (centralID == -1) {
             return cliente.getContrato() != GARANTIZADO;
