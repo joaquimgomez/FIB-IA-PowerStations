@@ -91,6 +91,8 @@ public class CentralsRepresentation {
         this.hCentral_new = copy.hCentral_new;
         this.hCliente_old = copy.hCliente_old;
         this.hCliente_new = copy.hCliente_new;
+        this.beneficio = copy.beneficio;
+        this.entropia = copy.entropia;
     }
 
     /* */

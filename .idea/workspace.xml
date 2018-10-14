@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e3aa1c-672a-480d-8b04-d62b58fdebec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CentralsRepresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralsRepresentation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -32,13 +31,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="10803" />
+          <entry key="java" value="10835" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="10803" />
+          <entry key="JAVA" value="10835" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -120,8 +119,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CentralsRepresentation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="92" column="46" selection-start-line="92" selection-start-column="46" selection-end-line="92" selection-end-column="46" />
+            <state relative-caret-position="498">
+              <caret line="94" column="38" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
               <folding>
                 <element signature="method#fillInitialSolution#0;class#CentralsRepresentation#0" />
               </folding>
@@ -132,8 +131,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+            <state relative-caret-position="360">
+              <caret line="24" column="68" selection-start-line="24" selection-start-column="68" selection-end-line="24" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,8 +143,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CentralsHeuristicFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-808">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="377">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -414,6 +413,12 @@
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/CentralsSuccessorFunction.java</url>
+          <line>23</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -549,16 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/aima/AIMA.jar!/aima/search/informed/HillClimbingSearch.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -571,8 +566,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CentralsHeuristicFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-808">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="377">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="68" selection-start-line="24" selection-start-column="68" selection-end-line="24" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -581,8 +586,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CentralsRepresentation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="92" column="46" selection-start-line="92" selection-start-column="46" selection-end-line="92" selection-end-column="46" />
+        <state relative-caret-position="498">
+          <caret line="94" column="38" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
           <folding>
             <element signature="method#fillInitialSolution#0;class#CentralsRepresentation#0" />
           </folding>
