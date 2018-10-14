@@ -19,8 +19,8 @@ public class Main {
 
         CentralsRepresentation r = new CentralsRepresentation(40, 1000, TipoSolucionInicial.Prioritarios);
 
-        //CentralsHillClimbing(r);
-        CentralsSimulatedAnnealing(r);
+        CentralsHillClimbing(r);
+        //CentralsSimulatedAnnealing(r);
     }
 
     private static void CentralsHillClimbing(CentralsRepresentation r) throws Exception {

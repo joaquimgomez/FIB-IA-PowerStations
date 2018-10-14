@@ -63,6 +63,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 
 			int centralID = state.representationClientes[clienteID];
 			if (centralID != -1) {
+
 				penalizacion += VEnergia.getPerdida(getDistacia(centralID, clienteID));
 			}
 			else {
@@ -76,7 +77,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		//System.out.println(beneficio);
 		//System.out.println(heuristico);
 
-		return -beneficio;
+		return -heuristico;
 	}
 
 	private static double getDistacia(int centralID, int clienteID) {
