@@ -87,6 +87,11 @@ public class CentralsRepresentation {
     public CentralsRepresentation(CentralsRepresentation copy) {
         this.representationClientes = copy.representationClientes.clone();
         this.representationCentrales = copy.representationCentrales.clone();
+        this.hCentral_old = copy.hCentral_old;
+        this.hCentral_new = copy.hCentral_new;
+        this.hCliente_old = copy.hCliente_old;
+        this.hCliente_new = copy.hCliente_new;
+
     }
 
     /* */
