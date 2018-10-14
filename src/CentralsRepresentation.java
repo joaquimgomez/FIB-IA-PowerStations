@@ -3,8 +3,10 @@ package src;
 import java.util.Arrays;
 import java.util.ArrayList;
 import IA.Energia.*;
+import aima.search.framework.HeuristicFunction;
 
 import static IA.Energia.Cliente.GARANTIZADO;
+import static IA.Energia.Cliente.NOGARANTIZADO;
 
 public class CentralsRepresentation {
 
@@ -23,32 +25,44 @@ public class CentralsRepresentation {
     public int[] representationClientes;
     public double[] representationCentrales;
 
+    // Beneficio y Heurístico
+    public double beneficio;
+    public double entropia;
+    public int central_old;
+    public int central_new;
+    public int cliente_old
+    public int cliente_new;
+
+
     /* Constructor */
     public CentralsRepresentation(int numCentrals, int numClients, TipoSolucionInicial tipSolInit) throws Exception {
 
         int [] propCentrals = new int[3];
-        Arrays.fill(propCentrals, 0);
+        /*Arrays.fill(propCentrals, 0);
         for (int central = 0; central < numCentrals; central++) {
             int tipo = IAUtils.random(0, 3);
             propCentrals[tipo]++;
-        }
+        }*/
+        propCentrals = new int[] {5, 10, 25};
 
         int [] propClients = new int[3];
-        Arrays.fill(propClients, 0);
+        /*Arrays.fill(propClients, 0);
         for (int i = 0; i < numClients; i++) {
             int tipo = IAUtils.random(0, 3);
             propClients[tipo]++;
-        }
+        }*/
 
-        double propClientsGuaranteed = IAUtils.random();
-        double [] proporcionClientes = new double[] {
+
+        double propClientsGuaranteed = 0.75; /*IAUtils.random();*/
+        /*double [] proporcionClientes = new double[] {
                 (double)propClients[0] / (double)numClients,
                 (double)propClients[1] / (double)numClients,
                 (double)propClients[2] / (double)numClients
         };
         if (proporcionClientes[0] + proporcionClientes[1] + proporcionClientes[2] != 1.0D) {
             proporcionClientes[2] = 1.0D - (proporcionClientes[0] + proporcionClientes[1]);
-        }
+        }*/
+        double[] proporcionClientes = new double[] {0.25, 0.30, 0.45};
 
         centrals = new Centrales(propCentrals, 0);
         clients = new Clientes(numClients, proporcionClientes, propClientsGuaranteed, 0);
@@ -58,6 +72,13 @@ public class CentralsRepresentation {
         Arrays.fill(representationCentrales, 0);
 
         fillInitialSolution(tipSolInit);
+
+        beneficio = setBeneficio();
+        entropia = setEntropia();
+        central_old = -1;
+        central_new = -1;
+        cliente_old = -1;
+        cliente_new = -1;
 
         System.out.println("Created");
     }
@@ -169,6 +190,7 @@ public class CentralsRepresentation {
         }
     }
 
+
     // Soluciones Iniciales
 
     private void fillRandom() {
@@ -220,4 +242,58 @@ public class CentralsRepresentation {
             }
         }
     }
+
+
+    // Calculo del beneficio
+    private double setBeneficio() throws Exception {
+        double beneficio = 0.0;
+
+        // Coste centrales
+        for (int centralID = 0; centralID < representationCentrales.length; centralID++) {
+            int typeCentral = CentralsRepresentation.centrals.get(centralID).getTipo();
+
+            if (representationCentrales[centralID] != 0){		// Coste central en marcha
+                beneficio -= VEnergia.getCosteMarcha(typeCentral);
+                beneficio -= VEnergia.getCosteProduccionMW(typeCentral);
+            } else {	// Coste central en parada
+                beneficio -= VEnergia.getCosteParada(typeCentral);
+            }
+        }
+
+
+        // Beneficio de los clientes
+        for (int clientID = 0; clientID < representationClientes.length; clientID++) {
+            int centralAssigned = representationClientes[clientID];
+            Cliente client = CentralsRepresentation.clients.get(clientID);
+            int typeClient = client.getContrato();
+
+            if (centralAssigned == -1 && typeClient == NOGARANTIZADO){
+                beneficio -= VEnergia.getTarifaClientePenalizacion(client.getTipo()) * client.getConsumo();
+            } else if (typeClient == NOGARANTIZADO){
+                beneficio += VEnergia.getTarifaClienteNoGarantizada(client.getTipo()) * client.getConsumo();
+            } else if (typeClient == GARANTIZADO){
+                beneficio += VEnergia.getTarifaClienteGarantizada(client.getTipo()) * client.getConsumo();
+            }
+        }
+
+        return beneficio;
+    }
+
+    private double setEntropia() {
+        double entropia = 0.0;
+
+        for (int clienteID = 0; clienteID < representationClientes.length; clienteID++) {
+
+            int centralID = representationClientes[clienteID];
+            if (centralID != -1) {
+                entropia += VEnergia.getPerdida(CentralsHeuristicFunction.getDistacia(centralID, clienteID));
+            }
+            else {
+                entropia += 1.0D;
+            }
+        }
+
+        return entropia;
+    }
+
 }

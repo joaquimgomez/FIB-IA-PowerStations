@@ -6,8 +6,6 @@ import IA.Energia.Cliente;
 import IA.Energia.VEnergia;
 import java.lang.Exception;
 
-import static IA.Energia.Cliente.GARANTIZADO;
-import static IA.Energia.Cliente.NOGARANTIZADO;
 
 public class CentralsHeuristicFunction implements HeuristicFunction {
 
@@ -17,69 +15,18 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 	}
 
 	public double getHeuristicValue(Object s) {
-		try {
-			CentralsRepresentation state = (CentralsRepresentation) s;
-			return HeuristicFunction1(state);
-		}
-		catch (Exception excepcion){
-			System.out.println("Error: " + excepcion);
-		}
-		return 0.0;
+		CentralsRepresentation state = (CentralsRepresentation) s;
+
+		return HeuristicFunction1(state);
 	}
 
-	public double HeuristicFunction1(CentralsRepresentation state) throws Exception {
-		double beneficio = 0.0;
+	public double HeuristicFunction1(CentralsRepresentation state) {
+		double heuristico = state.beneficio * (1.0D - (state.entropia / (double)CentralsRepresentation.clients.size()));
 
-		// Costes de las centrales
-		for (int centralID = 0; centralID < state.representationCentrales.length; centralID++){
-			int typeCentral = CentralsRepresentation.centrals.get(centralID).getTipo();
-
-			if (state.representationCentrales[centralID] != 0){		// Coste central en marcha
-				beneficio -= VEnergia.getCosteMarcha(typeCentral);
-				beneficio -= VEnergia.getCosteProduccionMW(typeCentral);
-			} else {	// Coste central en parada
-				beneficio -= VEnergia.getCosteParada(typeCentral);
-			}
-		}
-
-		// Beneficios de los clientes
-		for (int clientID = 0; clientID < state.representationClientes.length; clientID++){
-			int centralAssigned = state.representationClientes[clientID];
-			Cliente client = CentralsRepresentation.clients.get(clientID);
-			int typeClient = client.getContrato();
-
-			if (centralAssigned == -1 && typeClient == NOGARANTIZADO){
-				beneficio -= VEnergia.getTarifaClientePenalizacion(client.getTipo()) * client.getConsumo();
-			} else if (typeClient == NOGARANTIZADO){
-				beneficio += VEnergia.getTarifaClienteNoGarantizada(client.getTipo()) * client.getConsumo();
-			} else if (typeClient == GARANTIZADO){
-				beneficio += VEnergia.getTarifaClienteGarantizada(client.getTipo()) * client.getConsumo();
-			}
-		}
-
-		// Penalización de la pérdida
-		double penalizacion = 0.0D;
-		for (int clienteID = 0; clienteID < state.representationClientes.length; clienteID++) {
-
-			int centralID = state.representationClientes[clienteID];
-			if (centralID != -1) {
-				penalizacion += VEnergia.getPerdida(getDistacia(centralID, clienteID));
-			}
-			else {
-				penalizacion += 1.0D;
-			}
-		}
-
-		// System.out.println(beneficio);
-		double heuristico = beneficio * (1.0D - (penalizacion / (double)CentralsRepresentation.clients.size()));
-
-		//System.out.println(beneficio);
-		//System.out.println(heuristico);
-
-		return -beneficio;
+		return -heuristico;
 	}
 
-	private static double getDistacia(int centralID, int clienteID) {
+	public static double getDistacia(int centralID, int clienteID) {
 		Cliente cliente = CentralsRepresentation.clients.get(clienteID);
 		Central central = CentralsRepresentation.centrals.get(centralID);
 

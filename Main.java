@@ -19,8 +19,8 @@ public class Main {
 
         CentralsRepresentation r = new CentralsRepresentation(40, 1000, TipoSolucionInicial.Prioritarios);
 
-        //CentralsHillClimbing(r);
-        CentralsSimulatedAnnealing(r);
+        CentralsHillClimbing(r);
+        //CentralsSimulatedAnnealing(r);
     }
 
     private static void CentralsHillClimbing(CentralsRepresentation r) throws Exception {
@@ -44,7 +44,7 @@ public class Main {
             SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(2000,100,5,0.001D);
             SearchAgent agent = new SearchAgent(problem, search);
 
-            printActions(agent.getActions());
+            //printActions(agent.getActions());
             printInstrumentation(agent.getInstrumentation());
         } catch (Exception e){
             e.printStackTrace();

@@ -5,9 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CentralsRepresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralsRepresentation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CentralsSuccessorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralsSuccessorFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IAUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IAUtils.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,10 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/energIA$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1539355421668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-  </component>
-  <component name="CoverageViewManager">
-    <option name="myElementSize" value="221" />
+    <SUITE FILE_PATH="coverage/energIA$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1539355863856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="314615421">
@@ -65,36 +62,47 @@
     <session id="361448495">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
-          <entry key="project.open.time.11" value="2" />
+          <entry key="project.closed" value="25" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.11" value="4" />
           <entry key="project.open.time.12" value="1" />
-          <entry key="project.open.time.13" value="2" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.13" value="4" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.17" value="2" />
+          <entry key="project.open.time.2" value="4" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.open.time.9" value="4" />
+          <entry key="project.opened" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1722" />
+          <entry key="class" value="1" />
+          <entry key="java" value="5332" />
+          <entry key="vmoptions" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1722" />
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="5332" />
+          <entry key="PLAIN_TEXT" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="2" />
-          <entry key="java" value="4" />
+          <entry key="class" value="42" />
+          <entry key="java" value="18" />
+          <entry key="vmoptions" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="4" />
+          <entry key="CLASS" value="42" />
+          <entry key="JAVA" value="18" />
+          <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -102,71 +110,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CentralsRepresentation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1063">
-              <caret line="122" column="65" lean-forward="true" selection-start-line="122" selection-start-column="65" selection-end-line="122" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/aima/AIMA.jar!/aima/search/framework/Search.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/aima/AIMA.jar!/IA/probTSP/ProbTSPDemo.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/aima/AIMA.jar!/IA/probTSP/ProbTSPSuccessorFunctionSA.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="33" column="40" lean-forward="true" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CentralsHeuristicFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="75" column="10" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="10" />
+            <state relative-caret-position="330">
+              <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="method#getCosteEuros#0;class#CentralsHeuristicFunction#0" />
                 <element signature="method#getBeneficio#0;class#CentralsHeuristicFunction#0" />
               </folding>
@@ -175,13 +124,55 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunction.java">
+        <entry file="file://$PROJECT_DIR$/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="24" column="63" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+            <state relative-caret-position="521">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CentralsRepresentation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="method#CentralsRepresentation#0;class#CentralsRepresentation#0" />
+                <element signature="method#CentralsRepresentation#1;class#CentralsRepresentation#0" />
+                <element signature="method#fillInitialSolution#0;class#CentralsRepresentation#0" />
+                <element signature="method#canAssign#0;class#CentralsRepresentation#0" />
+                <element signature="method#assign#0;class#CentralsRepresentation#0" />
+                <element signature="method#canSwap#0;class#CentralsRepresentation#0" />
+                <element signature="method#swap#0;class#CentralsRepresentation#0" />
+                <element signature="method#fillRandom#0;class#CentralsRepresentation#0" />
+                <element signature="method#fillPrioritary#0;class#CentralsRepresentation#0" />
+                <element signature="method#fillAllClients#0;class#CentralsRepresentation#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="64" selection-start-line="29" selection-start-column="64" selection-end-line="29" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="26" column="77" lean-forward="true" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -195,6 +186,15 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>propClientsGuaranteed</find>
+      <find>random()</find>
+      <find>heu</find>
+      <find>getPorcentaje</find>
+      <find>getCons</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -204,18 +204,20 @@
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/GeneticAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/CentralsGoalTest.java" />
-        <option value="$PROJECT_DIR$/src/CentralsRepresentation.java" />
         <option value="$PROJECT_DIR$/src/IAUtils.java" />
-        <option value="$PROJECT_DIR$/src/CentralsSuccessorFunction.java" />
-        <option value="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/idea.vmoptions" />
         <option value="$PROJECT_DIR$/Main.java" />
         <option value="$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java" />
+        <option value="$PROJECT_DIR$/src/CentralsSuccessorFunction.java" />
+        <option value="$PROJECT_DIR$/src/CentralsHeuristicFunction.java" />
+        <option value="$PROJECT_DIR$/src/CentralsRepresentation.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="height" value="947" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -223,7 +225,34 @@
         <expanded-state>
           <State />
           <State>
-            <id>Spelling</id>
+            <id>General</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Java 7Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>Manifest</id>
+          </State>
+          <State>
+            <id>Other problemsKotlin</id>
+          </State>
+          <State>
+            <id>Plugin DevKit</id>
+          </State>
+          <State>
+            <id>PortabilityJava</id>
+          </State>
+          <State>
+            <id>Probable bugsKotlin</id>
           </State>
         </expanded-state>
       </profile-state>
@@ -251,23 +280,7 @@
             <path>
               <item name="energIA" type="b2602c69:ProjectViewProjectNode" />
               <item name="energIA" type="462c0819:PsiDirectoryNode" />
-              <item name="aima" type="462c0819:PsiDirectoryNode" />
-              <item name="AIMA.jar" type="ab9368bb:PsiFileNode" />
-            </path>
-            <path>
-              <item name="energIA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="energIA" type="462c0819:PsiDirectoryNode" />
-              <item name="aima" type="462c0819:PsiDirectoryNode" />
-              <item name="AIMA.jar" type="ab9368bb:PsiFileNode" />
-              <item name="IA" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="energIA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="energIA" type="462c0819:PsiDirectoryNode" />
-              <item name="aima" type="462c0819:PsiDirectoryNode" />
-              <item name="AIMA.jar" type="ab9368bb:PsiFileNode" />
-              <item name="IA" type="462c0819:PsiDirectoryNode" />
-              <item name="probTSP" type="462c0819:PsiDirectoryNode" />
+              <item name="Central" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="energIA" type="b2602c69:ProjectViewProjectNode" />
@@ -281,8 +294,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539457983809" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539516329185" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -302,9 +315,10 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application">
+    <configuration name="energIA" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="energIA" />
+      <option name="VM_PARAMETERS" value="-Xmx8192m" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -323,20 +337,10 @@
     </task>
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1680" height="947" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2802198" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2954823" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -345,7 +349,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4993895" weight="0.32857144" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4993895" weight="0.27953216" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993895" weight="0.3989796" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -353,7 +357,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32857144" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50061053" side_tool="true" weight="0.3989796" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3295583" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32857144" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32748538" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -382,7 +386,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3295583" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50061053" side_tool="true" weight="0.3989796" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3295583" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32857144" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32748538" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -396,24 +400,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/CentralsHeuristicFunction.java</url>
-          <line>115</line>
-          <properties />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Main.java</url>
-          <line>55</line>
-          <properties />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$PROJECT_DIR$/aima/AIMA.jar!/aima/search/framework/SuccessorFunction.class">
@@ -431,13 +417,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/aima/AIMA.jar!/aima/search/informed/SimulatedAnnealingSearch.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -481,25 +460,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="42" />
-          <folding>
-            <element signature="e#728#729#0" expanded="true" />
-            <element signature="e#760#761#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IAUtils.java">
+    <entry file="jar://$PROJECT_DIR$/aima/AIMA.jar!/aima/basic/Agent.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="50" lean-forward="true" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-          <folding>
-            <element signature="e#364#365#0" expanded="true" />
-            <element signature="e#407#408#0" expanded="true" />
-            <element signature="e#457#458#0" expanded="true" />
-            <element signature="e#520#521#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-            <element signature="e#635#636#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -510,45 +477,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CentralsRepresentation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1063">
-          <caret line="122" column="65" lean-forward="true" selection-start-line="122" selection-start-column="65" selection-end-line="122" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/aima/AIMA.jar!/aima/search/framework/SearchAgent.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-          <folding>
-            <element signature="e#799#800#0" expanded="true" />
-            <element signature="e#837#838#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="24" column="63" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CentralsHeuristicFunction.java">
+    <entry file="jar://$PROJECT_DIR$/aima/AIMA.jar!/aima/search/informed/SimulatedAnnealingSearch.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
           <caret line="75" column="10" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="10" />
-          <folding>
-            <element signature="method#getCosteEuros#0;class#CentralsHeuristicFunction#0" />
-            <element signature="method#getBeneficio#0;class#CentralsHeuristicFunction#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -566,16 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/aima/AIMA.jar!/aima/search/framework/Search.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -583,10 +512,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/idea.vmoptions">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunctionSA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+        <state relative-caret-position="360">
+          <caret line="26" column="77" lean-forward="true" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CentralsSuccessorFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="64" selection-start-line="29" selection-start-column="64" selection-end-line="29" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CentralsHeuristicFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getCosteEuros#0;class#CentralsHeuristicFunction#0" />
+            <element signature="method#getBeneficio#0;class#CentralsHeuristicFunction#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CentralsRepresentation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="method#CentralsRepresentation#0;class#CentralsRepresentation#0" />
+            <element signature="method#CentralsRepresentation#1;class#CentralsRepresentation#0" />
+            <element signature="method#fillInitialSolution#0;class#CentralsRepresentation#0" />
+            <element signature="method#canAssign#0;class#CentralsRepresentation#0" />
+            <element signature="method#assign#0;class#CentralsRepresentation#0" />
+            <element signature="method#canSwap#0;class#CentralsRepresentation#0" />
+            <element signature="method#swap#0;class#CentralsRepresentation#0" />
+            <element signature="method#fillRandom#0;class#CentralsRepresentation#0" />
+            <element signature="method#fillPrioritary#0;class#CentralsRepresentation#0" />
+            <element signature="method#fillAllClients#0;class#CentralsRepresentation#0" />
+          </folding>
         </state>
       </provider>
     </entry>
