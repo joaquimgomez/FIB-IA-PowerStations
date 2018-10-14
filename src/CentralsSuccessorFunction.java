@@ -30,7 +30,9 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = -1;
 
-					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new, succ);
+					CentralsHeuristicFunction h = new CentralsHeuristicFunction();
+					double heu = h.getHeuristicValue(succ);
+					Successor successor = new Successor(-heu + " --- " + clientID_old + ": " + centralID_old + " -> " + centralID_new, succ);
 
 					// System.out.println(successor.getAction());
 					ret.add(successor);
@@ -50,7 +52,9 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = clientID_new;
 
-					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new +
+					CentralsHeuristicFunction h = new CentralsHeuristicFunction();
+					double heu = h.getHeuristicValue(succ);
+					Successor successor = new Successor(-heu + " --- " + clientID_old + ": " + centralID_old + " -> " + centralID_new +
 							", " + clientID_new + ": " + centralID_new + " -> " + centralID_old, succ);
 
 					// System.out.println(successor.getAction());
