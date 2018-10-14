@@ -12,6 +12,7 @@ public class CentralsRepresentation {
 
     // Auxiliary Data Structures
     public enum TipoSolucionInicial {
+        Empty,          // Vacía
         Random,         // Rellenar random (puede no ser una solución)
         Prioritarios,   // Rellenar solo los prioritarios
         Todos           // Rellenar prioritarios + opcionales
@@ -98,7 +99,10 @@ public class CentralsRepresentation {
     /* */
     private void fillInitialSolution(TipoSolucionInicial tipSolInit) {
 
-        if (tipSolInit == TipoSolucionInicial.Random) {
+        if (tipSolInit == TipoSolucionInicial.Empty) {
+            fillEmpty();
+        }
+        else if (tipSolInit == TipoSolucionInicial.Random) {
             fillRandom();
         }
         else if (tipSolInit == TipoSolucionInicial.Prioritarios) {
@@ -187,14 +191,16 @@ public class CentralsRepresentation {
         int central_old = representationClientes[clientID_old];
         int central_new = representationClientes[clientID_new];
 
-        if (canSwap(clientID_old, clientID_new)) {
-            assign(central_old, clientID_old, central_new);
-            assign(central_new, clientID_new, central_old);
-        }
+        assign(central_old, clientID_old, central_new);
+        assign(central_new, clientID_new, central_old);
     }
 
 
     // Soluciones Iniciales
+
+    private void fillEmpty() {
+
+    }
 
     private void fillRandom() {
 

@@ -40,7 +40,7 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 			for (int clientID_new = clientID_old + 1; clientID_new < state.representationClientes.length; clientID_new++) {
 
 				int centralID_new = state.representationClientes[clientID_new];
-				if (centralID_new == -1 && state.canSwap(clientID_old, clientID_new)) {
+				if (state.canSwap(clientID_old, clientID_new)) {
 
 					CentralsRepresentation succ = new CentralsRepresentation(state);
 					succ.swap(clientID_old, clientID_new);
