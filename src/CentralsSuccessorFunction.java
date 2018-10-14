@@ -36,16 +36,11 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					ret.add(successor);
 				}
 			}
-		}
 
-		for (int clientID_old = 0; clientID_old < state.representationClientes.length; clientID_old++) {
-
-			// Swap con otro cliente
-			int centralID_old = state.representationClientes[clientID_old];
 			for (int clientID_new = clientID_old + 1; clientID_new < state.representationClientes.length; clientID_new++) {
 
 				int centralID_new = state.representationClientes[clientID_new];
-				if (state.canSwap(clientID_old, clientID_new)) {
+				if (centralID_new == -1 && state.canSwap(clientID_old, clientID_new)) {
 
 					CentralsRepresentation succ = new CentralsRepresentation(state);
 					succ.swap(clientID_old, clientID_new);

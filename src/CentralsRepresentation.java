@@ -177,15 +177,8 @@ public class CentralsRepresentation {
         double consumo_old_new = central_old != null ? IAUtils.getConsumo(central_old, cliente_new) : 0.0d;
         double consumo_new_new = central_new != null ? IAUtils.getConsumo(central_new, cliente_new) : 0.0d;
 
-        if (central_old != null && (representationCentrales[centralID_old] - consumo_old_old + consumo_new_old) > central_old.getProduccion()) {
-            return false;
-        }
-
-        if (central_new != null && (representationCentrales[centralID_new] - consumo_new_new + consumo_old_new) > central_new.getProduccion()) {
-            return false;
-        }
-
-        return true;
+        return !(central_old != null && (representationCentrales[centralID_old] - consumo_old_old + consumo_new_old) > central_old.getProduccion())
+                && (central_new == null || !((representationCentrales[centralID_new] - consumo_new_new + consumo_old_new) > central_new.getProduccion()));
     }
 
     // clientID_old: central_old -> central_new && clientID_new: central_new -> central_old
