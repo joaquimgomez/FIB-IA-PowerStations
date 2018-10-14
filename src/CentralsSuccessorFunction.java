@@ -25,10 +25,10 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					CentralsRepresentation succ = new CentralsRepresentation(state);
 					succ.assign(centralID_old, clientID_old, centralID_new);
 
-					succ.central_new = centralID_new;
-					succ.central_old = centralID_old;
-					succ.cliente_old = clientID_old;
-					succ.cliente_new = -1;
+					succ.hCentral_new = centralID_new;
+					succ.hCentral_old = centralID_old;
+					succ.hCliente_old = clientID_old;
+					succ.hCliente_new = -1;
 
 					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new, succ);
 
@@ -50,10 +50,10 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					CentralsRepresentation succ = new CentralsRepresentation(state);
 					succ.swap(clientID_old, clientID_new);
 
-					succ.central_new = centralID_new;
-					succ.central_old = centralID_old;
-					succ.cliente_old = clientID_old;
-					succ.cliente_new = clientID_new;
+					succ.hCentral_new = centralID_new;
+					succ.hCentral_old = centralID_old;
+					succ.hCliente_old = clientID_old;
+					succ.hCliente_new = clientID_new;
 
 					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new +
 							", " + clientID_new + ": " + centralID_new + " -> " + centralID_old, succ);

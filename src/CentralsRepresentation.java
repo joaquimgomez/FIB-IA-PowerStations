@@ -28,10 +28,10 @@ public class CentralsRepresentation {
     // Beneficio y Heurístico
     public double beneficio;
     public double entropia;
-    public int central_old;
-    public int central_new;
-    public int cliente_old;
-    public int cliente_new;
+    public int hCentral_old;
+    public int hCentral_new;
+    public int hCliente_old;
+    public int hCliente_new;
 
 
     /* Constructor */
@@ -75,10 +75,10 @@ public class CentralsRepresentation {
 
         beneficio = setBeneficio();
         entropia = setEntropia();
-        central_old = -1;
-        central_new = -1;
-        cliente_old = -1;
-        cliente_new = -1;
+        hCentral_old = -1;
+        hCentral_new = -1;
+        hCliente_old = -1;
+        hCliente_new = -1;
 
         System.out.println("Created");
     }
