@@ -2,8 +2,10 @@ package src;
 
 import IA.Energia.Central;
 import IA.Energia.Cliente;
-import aima.search.framework.HeuristicFunction;
 import IA.Energia.VEnergia;
+
+import aima.search.framework.HeuristicFunction;
+
 
 public class CentralsHeuristicFunction implements HeuristicFunction {
 
@@ -46,10 +48,6 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 				}
 
 			}
-			else {	// swap
-                // no cambia nada
-			}
-
 		}
 
 		// Beneficio clientes
@@ -67,13 +65,8 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 						state.beneficio += VEnergia.getTarifaClienteGarantizada(c.getTipo()) * c.getConsumo();
 					}
 				}
-				else {  // de una central a otra
-					// solo cambia el beneficio si la central se apaga (se comprueba en el coste de centrales
-				}
 			}
-			else {  // swap
-				// en swap de clientes entre centrales no afecta al beneficio
-			}
+
 		}
 
 		// Entropia solucion
@@ -102,8 +95,8 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		}
 
 		double heuristico = state.beneficio * (1.0D - (state.entropia / (double)CentralsRepresentation.clients.size()));
-		//System.out.println(heuristico);
 
 		return -heuristico;
 	}
+
 }
