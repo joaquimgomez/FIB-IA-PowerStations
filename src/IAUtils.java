@@ -29,14 +29,6 @@ public class IAUtils {
     }
 
 
-    public static void printState(CentralsRepresentation state) {
-        for (int client = 0; client < state.representationClientes.length; client++) {
-            System.out.print(state.representationClientes[client]);
-            System.out.print(' ');
-        }
-        System.out.print('\n');
-    }
-
     public static double getDistacia(int centralID, int clienteID) {
         Cliente cliente = CentralsRepresentation.clients.get(clienteID);
         Central central = CentralsRepresentation.centrals.get(centralID);
@@ -47,6 +39,7 @@ public class IAUtils {
         int d = x * x + y * y;
         return Math.sqrt(d);
     }
+
 
     /// @pre: distSquare es la distancia entre la central y el cliente, al cuadrado (es más fácil de computar)
     /// @post: devuelve el porcentaje de pérdida (0 = 0% , 1.0 = 100%)
@@ -81,33 +74,4 @@ public class IAUtils {
         return cliente.getConsumo() * (porcentaje + 1.0D);
     }
 
-    /// @pre: La central está en marcha.
-    /// @post: Devuelve el coste "money" de encender una central.
-    public static double getCosteEuros(Central central) {
-
-        // Calcular producción de la central
-        double produccion = central.getProduccion();
-
-        // Calcular coste de la producción total
-        switch (central.getTipo()) {
-            case 0:
-                return produccion * 5 + 2000;
-            case 1:
-                return produccion * 8 + 1000;
-            case 2:
-                return produccion * 15 + 500;
-        }
-
-        return Double.POSITIVE_INFINITY;
-    }
-
-    /// @post: Devuelve el beneficio de servir al cliente, en euros.
-    private static double getBeneficio(Cliente cliente) {
-        return (40 - cliente.getContrato() * (10) + cliente.getTipo() * 10) * cliente.getConsumo();
-    }
-
-    /// @post: Devuelve el coste de la indemnizacion por no servir al cliente, en euros
-    private static double getIndemnizacion(Cliente cliente) {
-        return cliente.getConsumo() * 5;
-    }
 }
