@@ -125,10 +125,10 @@ public class CentralsRepresentation {
 
     private void fillInitialSolution(String typeSolInit) {
 
-        if (typeSolInit == "p") {
+        if (typeSolInit.equals("p")) {
             fillPrioritary();
         }
-        else if (typeSolInit == "t") {
+        else if (typeSolInit.equals("t")) {
             fillAllClients();
         }
         else {
