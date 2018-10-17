@@ -1,11 +1,8 @@
-import aima.search.framework.Successor;
 import src.*;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
-
-import src.CentralsRepresentation.*;
 
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
@@ -13,14 +10,26 @@ import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
 
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        CentralsRepresentation r = new CentralsRepresentation(40, 1000, TipoSolucionInicial.Prioritarios);
+        CentralsRepresentation r;
 
-        //CentralsHillClimbing(r);
-        CentralsSimulatedAnnealing(r);
+        if (args[0].equals("r"))     r = new CentralsRepresentation(args[2]);
+        else {
+            int numClients = Integer.parseInt(args[3]);
+            double[] propTypeClients = new double[] {Double.parseDouble(args[4]), Double.parseDouble(args[5]), Double.parseDouble(args[6])};
+            double propClientsGuaranteed = Double.parseDouble(args[7]);
+            int[] propTypeCentrals = new int[] {Integer.parseInt(args[8]), Integer.parseInt(args[9]), Integer.parseInt(args[10])};
+            int seed = Integer.parseInt(args[11]);
+
+            r = new CentralsRepresentation(args[2], numClients, propTypeClients, propClientsGuaranteed, propTypeCentrals, seed);
+        }
+
+        if (args[1].equals("hc"))    CentralsHillClimbing(r);
+        else    CentralsSimulatedAnnealing(r);
     }
 
     private static void CentralsHillClimbing(CentralsRepresentation r) throws Exception {

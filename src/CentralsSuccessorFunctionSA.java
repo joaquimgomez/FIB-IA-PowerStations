@@ -13,7 +13,6 @@ public class CentralsSuccessorFunctionSA implements SuccessorFunction {
     public List getSuccessors(Object eState) {
         ArrayList retVal = new ArrayList ();
         CentralsRepresentation r = (CentralsRepresentation)eState;
-        CentralsHeuristicFunction hF = new CentralsHeuristicFunction();
 
         int cli1 = IAUtils.random(0, r.representationClientes.length);
         int cli2 = IAUtils.random(0, r.representationClientes.length);
@@ -23,27 +22,42 @@ public class CentralsSuccessorFunctionSA implements SuccessorFunction {
             int cent = IAUtils.random(0, r.representationCentrales.length);
 
             int op = IAUtils.random(0, 2);
-            CentralsRepresentation newRepresentation = new CentralsRepresentation(r);
-            if (op == 0 && newRepresentation.canAssign(cent, cli1)){ // asign
-                assigned = !assigned;
-                newRepresentation.assign(newRepresentation.representationClientes[cli1], cli1, cent);
+            CentralsRepresentation succ = new CentralsRepresentation(r);
+            String S = "";
+            if (op == 0 && succ.canAssign(cent, cli1)){ // asign
+                assigned = true;
+
+                succ.assign(succ.representationClientes[cli1], cli1, cent);
+
+                succ.hCentral_new = cent;
+                succ.hCentral_old = r.representationClientes[cli1];
+                succ.hCliente_old = cli1;
+                succ.hCliente_new = -1;
+
+                S = cli1 + ": " + r.representationClientes[cli1] + " -> " + cent;
             }
-            else if (op == 1 && newRepresentation.canSwap(cli1, cli2)){ // swap
-                assigned = !assigned;
-                newRepresentation.swap(cli1, cli2);
+            else if (op == 1 && succ.canSwap(cli1, cli2)){ // swap
+                assigned = true;
+
+                succ.swap(cli1, cli2);
+
+                succ.hCentral_new = r.representationClientes[cli2];
+                succ.hCentral_old = r.representationClientes[cli1];
+                succ.hCliente_old = cli1;
+                succ.hCliente_new = cli2;
+
+                S = cli1 + ": " + r.representationClientes[cli1] + " -> " + r.representationClientes[cli2]
+                        + ", " + cli2 + ": " + r.representationClientes[cli2] + " -> " + r.representationClientes[cli1];
             }
 
             if (assigned){
-                //double h = hF.getHeuristicValue(newRepresentation);
-                String S = "Heuristico: ";
-                Successor s = new Successor(S, newRepresentation);
+                Successor s = new Successor(S, succ);
                 retVal.add(s);
             }
 
         }
 
         System.out.println("nSucc = " + retVal.size());
-
         return retVal;
     }
 

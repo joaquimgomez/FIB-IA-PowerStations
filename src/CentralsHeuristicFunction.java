@@ -1,13 +1,11 @@
 package src;
 
-import aima.search.framework.HeuristicFunction;
 import IA.Energia.Central;
 import IA.Energia.Cliente;
 import IA.Energia.VEnergia;
-import java.lang.Exception;
 
-import static IA.Energia.Cliente.GARANTIZADO;
-import static IA.Energia.Cliente.NOGARANTIZADO;
+import aima.search.framework.HeuristicFunction;
+
 
 public class CentralsHeuristicFunction implements HeuristicFunction {
 
@@ -17,139 +15,88 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 	}
 
 	public double getHeuristicValue(Object s) {
+		CentralsRepresentation state = (CentralsRepresentation) s;
+
 		try {
-			CentralsRepresentation state = (CentralsRepresentation) s;
 			return HeuristicFunction1(state);
 		}
-		catch (Exception excepcion){
-			System.out.println("Error: " + excepcion);
+        catch (Exception e) {
+			System.out.println("Excepción: " + e);
+			return 0.0;
 		}
-		return 0.0;
 	}
 
 	public double HeuristicFunction1(CentralsRepresentation state) throws Exception {
-		double beneficio = 0.0;
 
-		// Costes de las centrales
-		for (int centralID = 0; centralID < state.representationCentrales.length; centralID++){
-			int typeCentral = CentralsRepresentation.centrals.get(centralID).getTipo();
+		// Coste centrales
+		if (state.hCliente_old != -1) { // no es la solución inicial
 
-			if (state.representationCentrales[centralID] != 0){		// Coste central en marcha
-				beneficio -= VEnergia.getCosteMarcha(typeCentral);
-				beneficio -= VEnergia.getCosteProduccionMW(typeCentral);
-			} else {	// Coste central en parada
-				beneficio -= VEnergia.getCosteParada(typeCentral);
+			if (state.hCliente_new == -1) { // assign
+
+				if (state.hCentral_old != -1 && state.representationCentrales[state.hCentral_old] == 0) { // se apaga una central old
+					Central cent = CentralsRepresentation.centrals.get(state.hCentral_old);
+                    state.beneficio += VEnergia.getCosteMarcha(cent.getTipo());
+					state.beneficio += VEnergia.getCosteProduccionMW(cent.getTipo());
+					state.beneficio -= VEnergia.getCosteParada(cent.getTipo());
+				}
+				if (state.hCentral_new != -1 && state.representationCentrales[state.hCentral_new]
+						== CentralsRepresentation.clients.get(state.hCliente_old).getConsumo()) { // se enciende central
+					Central cent = CentralsRepresentation.centrals.get(state.hCentral_new);
+					state.beneficio -= VEnergia.getCosteMarcha(cent.getTipo());
+					state.beneficio -= VEnergia.getCosteProduccionMW(cent.getTipo());
+					state.beneficio += VEnergia.getCosteParada(cent.getTipo());
+				}
+
 			}
 		}
 
-		// Beneficios de los clientes
-		for (int clientID = 0; clientID < state.representationClientes.length; clientID++){
-			int centralAssigned = state.representationClientes[clientID];
-			Cliente client = CentralsRepresentation.clients.get(clientID);
-			int typeClient = client.getContrato();
+		// Beneficio clientes
+		if (state.hCliente_old != -1) { // no es la solución inicial
 
-			if (centralAssigned == -1 && typeClient == NOGARANTIZADO){
-				beneficio -= VEnergia.getTarifaClientePenalizacion(client.getTipo()) * client.getConsumo();
-			} else if (typeClient == NOGARANTIZADO){
-				beneficio += VEnergia.getTarifaClienteNoGarantizada(client.getTipo()) * client.getConsumo();
-			} else if (typeClient == GARANTIZADO){
-				beneficio += VEnergia.getTarifaClienteGarantizada(client.getTipo()) * client.getConsumo();
+			if (state.hCliente_new == -1) { // assign
+				Cliente c = state.clients.get(state.hCliente_old);
+
+				if (state.hCentral_old == -1) { // fuera a dentro
+					if (c.getContrato() == Cliente.NOGARANTIZADO) {
+						state.beneficio += VEnergia.getTarifaClienteNoGarantizada(c.getTipo()) * c.getConsumo();
+						state.beneficio += VEnergia.getTarifaClientePenalizacion(c.getTipo()) * c.getConsumo();
+					}
+					else {
+						state.beneficio += VEnergia.getTarifaClienteGarantizada(c.getTipo()) * c.getConsumo();
+					}
+				}
 			}
+
 		}
 
-		// Penalización de la pérdida
-		double penalizacion = 0.0D;
-		for (int clienteID = 0; clienteID < state.representationClientes.length; clienteID++) {
+		// Entropia solucion
+		if (state.hCliente_old != -1) { // no es la solución inicial
 
-			int centralID = state.representationClientes[clienteID];
-			if (centralID != -1) {
-				penalizacion += VEnergia.getPerdida(getDistacia(centralID, clienteID));
+			if (state.hCliente_new == -1) { // assign
+				double perdida_old = state.hCentral_old != -1 ?
+						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_old, state.hCliente_old)) : 1.0D;
+				double perdida_new = state.hCentral_new != -1 ?
+						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_new, state.hCliente_old)) : 1.0D;
+				state.entropia = state.entropia - perdida_old + perdida_new;
 			}
-			else {
-				penalizacion += 1.0D;
+			else {  // swap
+				double perdida_old_old = state.hCentral_old != -1 ?
+						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_old, state.hCliente_old)) : 1.0D;
+				double perdida_new_old = state.hCentral_new != -1 ?
+						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_new, state.hCliente_old)) : 1.0D;
+				double perdida_old_new = state.hCentral_old != -1 ?
+						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_old, state.hCliente_new)) : 1.0D;
+				double perdida_new_new = state.hCentral_new != -1 ?
+						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_new, state.hCliente_new)) : 1.0D;
+				state.entropia = state.entropia - perdida_old_old + perdida_new_old;
+				state.entropia = state.entropia - perdida_new_new + perdida_old_new;
 			}
+
 		}
 
-		// System.out.println(beneficio);
-		double heuristico = beneficio * (1.0D - (penalizacion / (double)CentralsRepresentation.clients.size()));
+		double heuristico = state.beneficio * (1.0D - (state.entropia / (double)CentralsRepresentation.clients.size()));
 
-		//System.out.println(beneficio);
-		//System.out.println(heuristico);
-
-		return -beneficio;
+		return -heuristico;
 	}
 
-	private static double getDistacia(int centralID, int clienteID) {
-		Cliente cliente = CentralsRepresentation.clients.get(clienteID);
-		Central central = CentralsRepresentation.centrals.get(centralID);
-
-		// Get distancia
-		int x = central.getCoordX() - cliente.getCoordX();
-		int y = central.getCoordY() - cliente.getCoordY();
-		int d = x * x + y * y;
-		return Math.sqrt(d);
-	}
-
-	/// @pre: distSquare es la distancia entre la central y el cliente, al cuadrado (es más fácil de computar)
-	/// @post: devuelve el porcentaje de pérdida (0 = 0% , 1.0 = 100%)
-	private static double getPorcentaje(int distSquared) {
-		if (distSquared <= 100) {  // 10^2
-			return 0;
-		}
-		else if (distSquared <= 625) {  // 25^2
-			return 0.1;
-		}
-		else if (distSquared <= 2500) {  // 50^2
-			return 0.2;
-		}
-		else if (distSquared <= 5625) {  // 75^2
-			return 0.4;
-		}
-		else {
-			return 0.6;
-		}
-	}
-
-	/// @post: Devuelve los MW que consume un cliente para una central.
-	public static double getConsumo(Central central, Cliente cliente) {
-
-		// Get porcentaje
-		int x = central.getCoordX() - cliente.getCoordX();
-		int y = central.getCoordY() - cliente.getCoordY();
-		int d = x * x + y * y;
-		double porcentaje = getPorcentaje(d);
-
-		// Calcular produccion para el cliente
-		return cliente.getConsumo() * (porcentaje + 1.0D);
-	}
-
-	/// @pre: La central está en marcha.
-	/// @post: Devuelve el coste "money" de encender una central.
-	public static double getCosteEuros(Central central) {
-
-		// Calcular producción de la central
-		double produccion = central.getProduccion();
-
-		// Calcular coste de la producción total
-		switch (central.getTipo()) {
-			case 0:
-				return produccion * 5 + 2000;
-			case 1:
-				return produccion * 8 + 1000;
-			case 2:
-				return produccion * 15 + 500;
-		}
-
-		return Double.POSITIVE_INFINITY;
-	}
-
-	/// @post: Devuelve el beneficio de servir al cliente, en euros.
-	private static double getBeneficio(Cliente cliente) {
-		return (40 - cliente.getContrato() * (10) + cliente.getTipo() * 10) * cliente.getConsumo();
-	}
-
-	/// @post: Devuelve el coste de la indemnizacion por no servir al cliente, en euros
-	private static double getIndemnizacion(Cliente cliente) {
-		return cliente.getConsumo() * 5;
-	}
 }
