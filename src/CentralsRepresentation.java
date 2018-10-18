@@ -28,7 +28,7 @@ public class CentralsRepresentation {
 
     // Beneficio y Heurístico
     public double beneficio;
-    public double entropia;
+    public int entropia;
     public int hCentral_old;
     public int hCentral_new;
     public int hCliente_old;
@@ -74,12 +74,12 @@ public class CentralsRepresentation {
 
         fillInitialSolution(tipSolInit);
 
-        beneficio = setBeneficio();
-        entropia = setEntropia();
         hCentral_old = -1;
         hCentral_new = -1;
         hCliente_old = -1;
         hCliente_new = -1;
+        beneficio = setBeneficio();
+        entropia = setEntropia();
 
         System.out.println("Created");
     }
@@ -254,7 +254,7 @@ public class CentralsRepresentation {
 
 
     // Calculo del beneficio
-    private double setBeneficio() throws Exception {
+    protected double setBeneficio() throws Exception {
         double beneficio = 0.0;
 
         // Coste centrales
@@ -288,17 +288,17 @@ public class CentralsRepresentation {
         return beneficio;
     }
 
-    private double setEntropia() {
-        double entropia = 0.0;
+    protected int setEntropia() {
+        int entropia = 0;
 
         for (int clienteID = 0; clienteID < representationClientes.length; clienteID++) {
 
             int centralID = representationClientes[clienteID];
             if (centralID != -1) {
-                entropia += VEnergia.getPerdida(IAUtils.getDistacia(centralID, clienteID));
+                entropia += IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(centralID, clienteID));
             }
             else {
-                entropia += 1.0D;
+                entropia += 10;
             }
         }
 

@@ -48,23 +48,54 @@ public class IAUtils {
         return Math.sqrt(d);
     }
 
+    public static int getDistanciaSq(int centralID, int clienteID) {
+        Cliente cliente = CentralsRepresentation.clients.get(clienteID);
+        Central central = CentralsRepresentation.centrals.get(centralID);
+
+        // Get distancia
+        int x = central.getCoordX() - cliente.getCoordX();
+        int y = central.getCoordY() - cliente.getCoordY();
+        int d = x * x + y * y;
+        return d;
+    }
+
     /// @pre: distSquare es la distancia entre la central y el cliente, al cuadrado (es más fácil de computar)
     /// @post: devuelve el porcentaje de pérdida (0 = 0% , 1.0 = 100%)
-    private static double getPorcentaje(int distSquared) {
+    public static double getPorcentaje(int distSquared) {
+        if (distSquared <= 100) {  // 10^2
+            return 0.0D;
+        }
+        else if (distSquared <= 625) {  // 25^2
+            return 0.1D;
+        }
+        else if (distSquared <= 2500) {  // 50^2
+            return 0.2D;
+        }
+        else if (distSquared <= 5625) {  // 75^2
+            return 0.4D;
+        }
+        else {
+            return 0.6D;
+        }
+    }
+
+    /// @pre: distSquare es la distancia entre la central y el cliente, al cuadrado (es más fácil de computar)
+    /// @post: devuelve el porcentaje de pérdida (0 = 0% , 10 = 100%)
+    public static int getPorcentajeInt(int distSquared) {
         if (distSquared <= 100) {  // 10^2
             return 0;
         }
         else if (distSquared <= 625) {  // 25^2
-            return 0.1;
+            return 1;
         }
         else if (distSquared <= 2500) {  // 50^2
-            return 0.2;
+            return 2;
         }
         else if (distSquared <= 5625) {  // 75^2
-            return 0.4;
+            return 4;
         }
         else {
-            return 0.6;
+            return 6;
         }
     }
 

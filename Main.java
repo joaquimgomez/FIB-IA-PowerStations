@@ -1,23 +1,20 @@
-import aima.search.framework.Successor;
-import src.*;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-
-import src.CentralsRepresentation.*;
-
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
+import src.*;
+import src.CentralsRepresentation.TipoSolucionInicial;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        CentralsRepresentation r = new CentralsRepresentation(40, 1000, TipoSolucionInicial.Prioritarios);
+        CentralsRepresentation r = new CentralsRepresentation(10, 100, TipoSolucionInicial.Prioritarios);
 
         CentralsHillClimbing(r);
         //CentralsSimulatedAnnealing(r);
