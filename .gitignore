@@ -3,3 +3,5 @@ out/
 META-INF/
 
 \.idea/artifacts/
+
+\.DS_Store

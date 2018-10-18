@@ -9,6 +9,8 @@ import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
+import src.*;
+import src.CentralsRepresentation.TipoSolucionInicial;
 
 
 public class Main {

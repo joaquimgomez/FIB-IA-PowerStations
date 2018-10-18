@@ -26,7 +26,8 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		}
 	}
 
-	public double HeuristicFunction1(CentralsRepresentation state) throws Exception {
+	private double HeuristicFunction1(CentralsRepresentation state) throws Exception {
+
 
 		// Coste centrales
 		if (state.hCliente_old != -1) { // no es la solución inicial
@@ -54,7 +55,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		if (state.hCliente_old != -1) { // no es la solución inicial
 
 			if (state.hCliente_new == -1) { // assign
-				Cliente c = state.clients.get(state.hCliente_old);
+				Cliente c = CentralsRepresentation.clients.get(state.hCliente_old);
 
 				if (state.hCentral_old == -1) { // fuera a dentro
 					if (c.getContrato() == Cliente.NOGARANTIZADO) {
@@ -69,32 +70,36 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 
 		}
 
+
+
 		// Entropia solucion
 		if (state.hCliente_old != -1) { // no es la solución inicial
 
 			if (state.hCliente_new == -1) { // assign
-				double perdida_old = state.hCentral_old != -1 ?
-						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_old, state.hCliente_old)) : 1.0D;
-				double perdida_new = state.hCentral_new != -1 ?
-						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_new, state.hCliente_old)) : 1.0D;
-				state.entropia = state.entropia - perdida_old + perdida_new;
+				int perdida_old = state.hCentral_old != -1 ?
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_old)) : 10;
+				int perdida_new = state.hCentral_new != -1 ?
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_old)) : 10;
+				state.entropia -= perdida_old;
+				state.entropia += perdida_new;
 			}
 			else {  // swap
-				double perdida_old_old = state.hCentral_old != -1 ?
-						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_old, state.hCliente_old)) : 1.0D;
-				double perdida_new_old = state.hCentral_new != -1 ?
-						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_new, state.hCliente_old)) : 1.0D;
-				double perdida_old_new = state.hCentral_old != -1 ?
-						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_old, state.hCliente_new)) : 1.0D;
-				double perdida_new_new = state.hCentral_new != -1 ?
-						VEnergia.getPerdida(IAUtils.getDistacia(state.hCentral_new, state.hCliente_new)) : 1.0D;
-				state.entropia = state.entropia - perdida_old_old + perdida_new_old;
-				state.entropia = state.entropia - perdida_new_new + perdida_old_new;
+				int perdida_old_old = state.hCentral_old != -1 ?
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_old)) : 10;
+				int perdida_new_old = state.hCentral_new != -1 ?
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_old)) : 10;
+				int perdida_old_new = state.hCentral_old != -1 ?
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_new)) : 10;
+				int perdida_new_new = state.hCentral_new != -1 ?
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_new)) : 10;
+				state.entropia -= perdida_old_old;
+				state.entropia += perdida_new_old;
+				state.entropia -= perdida_new_new;
+				state.entropia += perdida_old_new;
 			}
-
 		}
 
-		double heuristico = state.beneficio * (1.0D - (state.entropia / (double)CentralsRepresentation.clients.size()));
+		double heuristico = state.beneficio * (1.00 - ((double)state.entropia / (double)CentralsRepresentation.clients.size() * 10));
 
 		return -heuristico;
 	}

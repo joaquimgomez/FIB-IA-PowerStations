@@ -24,7 +24,7 @@ public class CentralsRepresentation {
     // Heuristic members
 
     public double beneficio;
-    public double entropia;
+    public int entropia;
     public int hCentral_old;
     public int hCentral_new;
     public int hCliente_old;
@@ -218,17 +218,17 @@ public class CentralsRepresentation {
         return beneficio;
     }
 
-    private double setEntropia() {
-        double entropia = 0.0;
+    protected int setEntropia() {
+        int entropia = 0;
 
         for (int clienteID = 0; clienteID < representationClientes.length; clienteID++) {
 
             int centralID = representationClientes[clienteID];
             if (centralID != -1) {
-                entropia += VEnergia.getPerdida(IAUtils.getDistacia(centralID, clienteID));
+                entropia += IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(centralID, clienteID));
             }
             else {
-                entropia += 1.0D;
+                entropia += 10;
             }
         }
 
