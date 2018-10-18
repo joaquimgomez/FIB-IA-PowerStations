@@ -184,7 +184,7 @@ public class CentralsRepresentation {
         hCliente_new = -1;
     }
 
-    private double setBeneficio() throws Exception {
+    protected double setBeneficio() throws Exception {
         double beneficio = 0.0;
 
         // Coste centrales
