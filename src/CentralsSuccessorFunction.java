@@ -20,6 +20,14 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 			System.out.println(e);
 		}
 
+		try {
+			state.beneficio = state.setBeneficio();
+			state.entropia = state.setEntropia();
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+
 		// Por cada cliente
 		for (int clientID_old = 0; clientID_old < state.representationClientes.length; clientID_old++) {
 
