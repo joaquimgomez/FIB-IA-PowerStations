@@ -80,8 +80,8 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_old)) : 10;
 				int perdida_new = state.hCentral_new != -1 ?
 						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_old)) : 10;
-				state.entropia -= perdida_old;
-				state.entropia += perdida_new;
+				state.perdida -= perdida_old;
+				state.perdida += perdida_new;
 			}
 			else {  // swap
 				int perdida_old_old = state.hCentral_old != -1 ?
@@ -92,15 +92,16 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_new)) : 10;
 				int perdida_new_new = state.hCentral_new != -1 ?
 						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_new)) : 10;
-				state.entropia -= perdida_old_old;
-				state.entropia += perdida_new_old;
-				state.entropia -= perdida_new_new;
-				state.entropia += perdida_old_new;
+				state.perdida -= perdida_old_old;
+				state.perdida += perdida_new_old;
+				state.perdida -= perdida_new_new;
+				state.perdida += perdida_old_new;
 			}
 		}
 
-		double heuristico = state.beneficio * (1.00 - ((double)state.entropia / (double)CentralsRepresentation.clients.size() * 10));
-
+		double perdida = (double)state.perdida / (double)(state.representationClientes.length * 10 + state.perdida);
+		double costePerdida = (perdida / 10.0D) * state.consumoTotal * 5;  // 5 € de penalización por cada MW de pérdida
+		double heuristico = state.beneficio - costePerdida;
 		return -heuristico;
 	}
 
