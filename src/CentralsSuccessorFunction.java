@@ -1,5 +1,6 @@
 package src;
 
+import aima.search.framework.HeuristicFunction;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 import java.util.*;
@@ -12,17 +13,13 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 
 		CentralsRepresentation state = (CentralsRepresentation)node;
 
-		try {
-			state.beneficio = state.setBeneficio();
-			state.perdida = state.setEntropia();
-		}
-		catch (Exception e) {
-			System.out.println(e);
-		}
+		HeuristicFunction hf = new CentralsHeuristicFunction();
 
 		try {
 			state.beneficio = state.setBeneficio();
 			state.perdida = state.setEntropia();
+			state.hCliente_old = -1;
+			//System.out.println(hf.getHeuristicValue(state));
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -45,7 +42,6 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_new = -1;
 
 					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new, succ);
-
 					ret.add(successor);
 				}
 			}
@@ -63,9 +59,8 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = clientID_new;
 
-					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new +
-							", " + clientID_new + ": " + centralID_new + " -> " + centralID_old, succ);
-
+					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new
+							+ ", " + clientID_new + ": " + centralID_new + " -> " + centralID_old, succ);
 					ret.add(successor);
 				}
 			}
