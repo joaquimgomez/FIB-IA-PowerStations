@@ -16,8 +16,7 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 		try {
 			state.beneficio = state.setBeneficio();
 			state.perdida = state.setEntropia();
-
-			System.out.println();
+			state.consumoTotal = state.setConsumoTotal();
 		}
 		catch (Exception e) {
 			System.out.println(e);

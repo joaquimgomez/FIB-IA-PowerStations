@@ -236,7 +236,15 @@ public class CentralsRepresentation {
         return entropia;
     }
 
+    protected int setConsumoTotal() {
+        int consumoTotal = 0;
 
+        for (int centralID = 0; centralID < representationCentrales.length; centralID++) {
+            consumoTotal += representationCentrales[centralID];
+        }
+
+        return consumoTotal;
+    }
 
     // Operators and Auxiliary methods for operators
 
