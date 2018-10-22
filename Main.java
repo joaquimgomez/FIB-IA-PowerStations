@@ -1,3 +1,4 @@
+import IA.Energia.Central;
 import src.*;
 
 import java.util.Iterator;
@@ -65,6 +66,25 @@ public class Main {
         if (sa) {
             CentralsHeuristicFunction hf = new CentralsHeuristicFunction();
             System.out.println(hf.getHeuristicValue(actions.get(0)));
+
+            Integer A = 0;
+            Integer B = 0;
+            Integer C = 0;
+            for (int centralID = 0; centralID < CentralsRepresentation.centrals.size(); centralID++) {
+                Central cen = CentralsRepresentation.centrals.get(centralID);
+                if (((CentralsRepresentation)actions.get(0)).representationCentrales[centralID] != 0) {
+                    if (cen.getTipo() == Central.CENTRALA) {
+                        A++;
+                    }
+                    else if (cen.getTipo() == Central.CENTRALB) {
+                        B++;
+                    }
+                    else {
+                        C++;
+                    }
+                }
+            }
+            System.out.println("A: " + A + ", B: " + B + ", C: " + C);
         }
         else {
             for (int i = 0; i < actions.size(); ++i) {

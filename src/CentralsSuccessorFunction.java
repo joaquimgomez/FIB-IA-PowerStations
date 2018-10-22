@@ -33,8 +33,25 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = -1;
 
+					Integer A = 0;
+					Integer B = 0;
+					Integer C = 0;
+					for (int centralID = 0; centralID < CentralsRepresentation.centrals.size(); centralID++) {
+						Central cen = CentralsRepresentation.centrals.get(centralID);
+						if (succ.representationCentrales[centralID] != 0) {
+							if (cen.getTipo() == Central.CENTRALA) {
+								A++;
+							}
+							else if (cen.getTipo() == Central.CENTRALB) {
+								B++;
+							}
+							else {
+								C++;
+							}
+						}
+					}
 					CentralsHeuristicFunction hf = new CentralsHeuristicFunction();
-					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new + " & h = " + hf.getHeuristicValue(succ), succ);
+					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new + " & h = " + hf.getHeuristicValue(succ) + " cen = " + A + " " + B + " " + C, succ);
 
 					ret.add(successor);
 				}
@@ -53,9 +70,27 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = clientID_new;
 
+					Integer A = 0;
+					Integer B = 0;
+					Integer C = 0;
+					for (int centralID = 0; centralID < CentralsRepresentation.centrals.size(); centralID++) {
+						Central cen = CentralsRepresentation.centrals.get(centralID);
+						if (succ.representationCentrales[centralID] != 0) {
+							if (cen.getTipo() == Central.CENTRALA) {
+								A++;
+							}
+							else if (cen.getTipo() == Central.CENTRALB) {
+								B++;
+							}
+							else {
+								C++;
+							}
+						}
+					}
+
 					CentralsHeuristicFunction hf = new CentralsHeuristicFunction();
 					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new +
-							", " + clientID_new + ": " + centralID_new + " -> " + centralID_old + " & h = " + hf.getHeuristicValue(succ), succ);
+							", " + clientID_new + ": " + centralID_new + " -> " + centralID_old + " & h = " + hf.getHeuristicValue(succ) + " cen = " + A + " " + B + " " + C, succ);
 
 					ret.add(successor);
 				}
