@@ -1,32 +1,21 @@
 package src;
 
+import IA.Energia.Central;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 import java.util.*;
 
 public class CentralsSuccessorFunction implements SuccessorFunction {
 
+	public void funcionamientoCentrales(CentralsRepresentation state, Integer A, Integer B, Integer C) {
+
+	}
+
 	public List getSuccessors(Object node) {
 
 		ArrayList ret = new ArrayList();
 
 		CentralsRepresentation state = (CentralsRepresentation)node;
-
-		try {
-			state.beneficio = state.setBeneficio();
-			state.entropia = state.setEntropia();
-		}
-		catch (Exception e) {
-			System.out.println(e);
-		}
-
-		try {
-			state.beneficio = state.setBeneficio();
-			state.entropia = state.setEntropia();
-		}
-		catch (Exception e) {
-			System.out.println(e);
-		}
 
 		// Por cada cliente
 		for (int clientID_old = 0; clientID_old < state.representationClientes.length; clientID_old++) {
@@ -44,7 +33,8 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = -1;
 
-					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new, succ);
+					CentralsHeuristicFunction hf = new CentralsHeuristicFunction();
+					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new + " & h = " + hf.getHeuristicValue(succ), succ);
 
 					ret.add(successor);
 				}
@@ -63,8 +53,9 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = clientID_new;
 
+					CentralsHeuristicFunction hf = new CentralsHeuristicFunction();
 					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new +
-							", " + clientID_new + ": " + centralID_new + " -> " + centralID_old, succ);
+							", " + clientID_new + ": " + centralID_new + " -> " + centralID_old + " & h = " + hf.getHeuristicValue(succ), succ);
 
 					ret.add(successor);
 				}

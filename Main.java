@@ -40,7 +40,7 @@ public class Main {
             Search search = new HillClimbingSearch();
             SearchAgent agent = new SearchAgent(problem, search);
 
-            printActions(agent.getActions());
+            printActions(agent.getActions(), false);
             printInstrumentation(agent.getInstrumentation());
     }
 
@@ -50,20 +50,27 @@ public class Main {
                     new CentralsSuccessorFunctionSA(),
                     new CentralsGoalTest(),
                     new CentralsHeuristicFunction());
-            SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(2000,100,5,0.001D);
+            SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(50000000,100,10,0.001D);
             SearchAgent agent = new SearchAgent(problem, search);
 
-            printActions(agent.getActions());
+            printActions(agent.getActions(), true);
             printInstrumentation(agent.getInstrumentation());
+            System.out.println("Finished");
         } catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    private static void printActions(List actions) {
-        for (int i = 0; i < actions.size(); ++i) {
-            String action = (String)actions.get(i);
-            System.out.println(action);
+    private static void printActions(List actions, boolean sa) {
+        if (sa) {
+            CentralsHeuristicFunction hf = new CentralsHeuristicFunction();
+            System.out.println(hf.getHeuristicValue(actions.get(0)));
+        }
+        else {
+            for (int i = 0; i < actions.size(); ++i) {
+                String action = (String)actions.get(i);
+                System.out.println(action);
+            }
         }
     }
 

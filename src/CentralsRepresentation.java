@@ -29,7 +29,7 @@ public class CentralsRepresentation {
     public int hCentral_new;
     public int hCliente_old;
     public int hCliente_new;
-
+    public double perdidaTotal;
 
 
     // Constructors
@@ -160,17 +160,24 @@ public class CentralsRepresentation {
 
     private void fillAllClients() {
 
+        fillPrioritary();
+
         int currentClient = 0;
         int currentCentral = 0;
 
         while (currentClient < clients.size() && currentCentral < centrals.size()) {
 
-            if (canAssign(currentCentral, currentClient)) {
-                assign(-1, currentClient, currentCentral);
-                currentClient++;
+            if (representationClientes[currentClient] == -1) {
+                if (canAssign(currentCentral, currentClient)) {
+                    assign(-1, currentClient, currentCentral);
+                    currentClient++;
+                }
+                else {
+                    currentCentral++;
+                }
             }
             else {
-                currentCentral++;
+                currentClient++;
             }
         }
     }
@@ -182,6 +189,7 @@ public class CentralsRepresentation {
         hCentral_new = -1;
         hCliente_old = -1;
         hCliente_new = -1;
+        perdidaTotal = 0;
     }
 
     protected double setBeneficio() throws Exception {
@@ -254,12 +262,14 @@ public class CentralsRepresentation {
             cenOld = centrals.get(centralID_old);
             consumoOld = IAUtils.getConsumo(cenOld, client);
             representationCentrales[centralID_old] -= consumoOld;
+            perdidaTotal -= VEnergia.getPerdida(IAUtils.getDistacia(centralID_old, clientID)) * client.getConsumo();
         }
 
         if (centralID_new != -1) {
             cenNew = centrals.get(centralID_new);
             consumoNew = IAUtils.getConsumo(cenNew, client);
             representationCentrales[centralID_new] += consumoNew;
+            perdidaTotal += VEnergia.getPerdida(IAUtils.getDistacia(centralID_new, clientID)) * client.getConsumo();
         }
 
         representationClientes[clientID] = centralID_new;
