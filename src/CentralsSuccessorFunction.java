@@ -13,17 +13,17 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 
 		CentralsRepresentation state = (CentralsRepresentation)node;
 
-		HeuristicFunction hf = new CentralsHeuristicFunction();
-
 		try {
 			state.beneficio = state.setBeneficio();
 			state.perdida = state.setEntropia();
-			state.hCliente_old = -1;
-			//System.out.println(hf.getHeuristicValue(state));
+
+			System.out.println();
 		}
 		catch (Exception e) {
 			System.out.println(e);
 		}
+
+		HeuristicFunction hf = new CentralsHeuristicFunction();
 
 		// Por cada cliente
 		for (int clientID_old = 0; clientID_old < state.representationClientes.length; clientID_old++) {
@@ -41,7 +41,10 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = -1;
 
-					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new, succ);
+					CentralsRepresentation succAux = new CentralsRepresentation(succ);
+
+					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new + "; H:" + -hf.getHeuristicValue(succAux), succ);
+
 					ret.add(successor);
 				}
 			}
@@ -59,8 +62,11 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = clientID_new;
 
+					CentralsRepresentation succAux = new CentralsRepresentation(succ);
+
 					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new
-							+ ", " + clientID_new + ": " + centralID_new + " -> " + centralID_old, succ);
+							+ ", " + clientID_new + ": " + centralID_new + " -> " + centralID_old  + "; H:" + -hf.getHeuristicValue(succAux), succ);
+
 					ret.add(successor);
 				}
 			}

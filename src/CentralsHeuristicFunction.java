@@ -100,11 +100,11 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 		}
 
 		double perdida = (double)state.perdida / (double)(state.representationClientes.length * 10 + state.perdida);
-		double costePerdida = (perdida / 10.0D) * state.consumoTotal * 5;  // 5 € de penalización por cada MW de pérdida
+		double costePerdida = perdida * state.consumoTotal * 5;  // 5 € de penalización por cada MW de pérdida
 		double heuristico = state.beneficio - costePerdida;
-		System.out.println("p: "+perdida);
+		/*System.out.println("p: "+perdida);
 		System.out.println("cp: "+costePerdida);
-		System.out.println("be:" + state.beneficio);
+		System.out.println("be:" + state.beneficio);*/
 		return -heuristico;
 	}
 
