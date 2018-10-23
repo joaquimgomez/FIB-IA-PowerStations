@@ -30,7 +30,7 @@ public class CentralsRepresentation {
     public int hCentral_new;
     public int hCliente_old;
     public int hCliente_new;
-
+    public double perdidaTotal;
 
 
     // Constructors
@@ -160,29 +160,36 @@ public class CentralsRepresentation {
 
     private void fillAllClients() {
 
+        fillPrioritary();
+
         int currentClient = 0;
         int currentCentral = 0;
 
         while (currentClient < clients.size() && currentCentral < centrals.size()) {
 
-            if (canAssign(currentCentral, currentClient)) {
-                assign(-1, currentClient, currentCentral);
-                currentClient++;
+            if (representationClientes[currentClient] == -1) {
+                if (canAssign(currentCentral, currentClient)) {
+                    assign(-1, currentClient, currentCentral);
+                    currentClient++;
+                }
+                else {
+                    currentCentral++;
+                }
             }
             else {
-                currentCentral++;
+                currentClient++;
             }
         }
     }
 
     private void fillInitHeuristicParameters() throws Exception {
+        beneficio = setBeneficio();
+        perdida = setEntropia();
         hCentral_old = -1;
         hCentral_new = -1;
         hCliente_old = -1;
         hCliente_new = -1;
-        beneficio = setBeneficio();
-        perdida = setEntropia();
-
+        perdidaTotal = 0;
     }
 
     protected double setBeneficio() throws Exception {
@@ -264,6 +271,7 @@ public class CentralsRepresentation {
             consumoOld = IAUtils.getConsumo(cenOld, client);
             consumoTotal -= consumoOld;
             representationCentrales[centralID_old] -= consumoOld;
+            perdidaTotal -= VEnergia.getPerdida(IAUtils.getDistacia(centralID_old, clientID)) * client.getConsumo();
         }
 
         if (centralID_new != -1) {
@@ -271,6 +279,7 @@ public class CentralsRepresentation {
             consumoNew = IAUtils.getConsumo(cenNew, client);
             consumoTotal += consumoNew;
             representationCentrales[centralID_new] += consumoNew;
+            perdidaTotal += VEnergia.getPerdida(IAUtils.getDistacia(centralID_new, clientID)) * client.getConsumo();
         }
 
         representationClientes[clientID] = centralID_new;

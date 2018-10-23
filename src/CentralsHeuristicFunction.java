@@ -77,7 +77,7 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 
 			if (state.hCliente_new == -1) { // assign
 				int perdida_old = state.hCentral_old != -1 ?
-						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_old)) : 10;
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_old)) : 0;
 				int perdida_new = state.hCentral_new != -1 ?
 						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_old)) : 10;
 				state.perdida -= perdida_old;
@@ -85,11 +85,11 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 			}
 			else {  // swap
 				int perdida_old_old = state.hCentral_old != -1 ?
-						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_old)) : 10;
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_old)) : 0;
 				int perdida_new_old = state.hCentral_new != -1 ?
-						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_old)) : 10;
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_old)) : 0;
 				int perdida_old_new = state.hCentral_old != -1 ?
-						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_new)) : 10;
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_new)) : 0;
 				int perdida_new_new = state.hCentral_new != -1 ?
 						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_new)) : 10;
 				state.perdida -= perdida_old_old;
@@ -97,14 +97,10 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 				state.perdida -= perdida_new_new;
 				state.perdida += perdida_old_new;
 			}
+			state.hCliente_old = -1;
 		}
 
-		double perdida = (double)state.perdida / (double)(state.representationClientes.length * 10 + state.perdida);
-		double costePerdida = perdida * state.consumoTotal * 5;  // 5 € de penalización por cada MW de pérdida
-		double heuristico = state.beneficio - costePerdida;
-		System.out.println("p: " + perdida);
-		System.out.println("cp: " + costePerdida);
-		System.out.println("be: " + state.beneficio);
+		double heuristico = state.beneficio - state.perdidaTotal * 5;
 		return -heuristico;
 	}
 

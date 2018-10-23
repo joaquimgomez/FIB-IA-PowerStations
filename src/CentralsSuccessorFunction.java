@@ -1,11 +1,16 @@
 package src;
 
+import IA.Energia.Central;
 import aima.search.framework.HeuristicFunction;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 import java.util.*;
 
 public class CentralsSuccessorFunction implements SuccessorFunction {
+
+	public void funcionamientoCentrales(CentralsRepresentation state, Integer A, Integer B, Integer C) {
+
+	}
 
 	public List getSuccessors(Object node) {
 
@@ -39,7 +44,7 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCentral_old = centralID_old;
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = -1;
-
+          
 					CentralsRepresentation succAux = new CentralsRepresentation(succ);
 
 					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new + "; H:" + -hf.getHeuristicValue(succAux), succ);
