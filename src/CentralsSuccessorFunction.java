@@ -1,6 +1,7 @@
 package src;
 
 import IA.Energia.Central;
+import aima.search.framework.HeuristicFunction;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 import java.util.*;
@@ -17,6 +18,17 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 
 		CentralsRepresentation state = (CentralsRepresentation)node;
 
+		try {
+			state.beneficio = state.setBeneficio();
+			state.perdida = state.setEntropia();
+			state.consumoTotal = state.setConsumoTotal();
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+
+		HeuristicFunction hf = new CentralsHeuristicFunction();
+
 		// Por cada cliente
 		for (int clientID_old = 0; clientID_old < state.representationClientes.length; clientID_old++) {
 
@@ -32,26 +44,10 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCentral_old = centralID_old;
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = -1;
+          
+					CentralsRepresentation succAux = new CentralsRepresentation(succ);
 
-					Integer A = 0;
-					Integer B = 0;
-					Integer C = 0;
-					for (int centralID = 0; centralID < CentralsRepresentation.centrals.size(); centralID++) {
-						Central cen = CentralsRepresentation.centrals.get(centralID);
-						if (succ.representationCentrales[centralID] != 0) {
-							if (cen.getTipo() == Central.CENTRALA) {
-								A++;
-							}
-							else if (cen.getTipo() == Central.CENTRALB) {
-								B++;
-							}
-							else {
-								C++;
-							}
-						}
-					}
-					CentralsHeuristicFunction hf = new CentralsHeuristicFunction();
-					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new + " & h = " + hf.getHeuristicValue(succ) + " cen = " + A + " " + B + " " + C, succ);
+					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new + "; H:" + -hf.getHeuristicValue(succAux), succ);
 
 					ret.add(successor);
 				}
@@ -70,27 +66,10 @@ public class CentralsSuccessorFunction implements SuccessorFunction {
 					succ.hCliente_old = clientID_old;
 					succ.hCliente_new = clientID_new;
 
-					Integer A = 0;
-					Integer B = 0;
-					Integer C = 0;
-					for (int centralID = 0; centralID < CentralsRepresentation.centrals.size(); centralID++) {
-						Central cen = CentralsRepresentation.centrals.get(centralID);
-						if (succ.representationCentrales[centralID] != 0) {
-							if (cen.getTipo() == Central.CENTRALA) {
-								A++;
-							}
-							else if (cen.getTipo() == Central.CENTRALB) {
-								B++;
-							}
-							else {
-								C++;
-							}
-						}
-					}
+					CentralsRepresentation succAux = new CentralsRepresentation(succ);
 
-					CentralsHeuristicFunction hf = new CentralsHeuristicFunction();
-					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new +
-							", " + clientID_new + ": " + centralID_new + " -> " + centralID_old + " & h = " + hf.getHeuristicValue(succ) + " cen = " + A + " " + B + " " + C, succ);
+					Successor successor = new Successor(clientID_old + ": " + centralID_old + " -> " + centralID_new
+							+ ", " + clientID_new + ": " + centralID_new + " -> " + centralID_old  + "; H:" + -hf.getHeuristicValue(succAux), succ);
 
 					ret.add(successor);
 				}

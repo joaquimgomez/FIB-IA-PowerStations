@@ -79,9 +79,9 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 				int perdida_old = state.hCentral_old != -1 ?
 						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_old)) : 0;
 				int perdida_new = state.hCentral_new != -1 ?
-						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_old)) : 0;
-				state.entropia -= perdida_old;
-				state.entropia += perdida_new;
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_old)) : 10;
+				state.perdida -= perdida_old;
+				state.perdida += perdida_new;
 			}
 			else {  // swap
 				int perdida_old_old = state.hCentral_old != -1 ?
@@ -91,13 +91,12 @@ public class CentralsHeuristicFunction implements HeuristicFunction {
 				int perdida_old_new = state.hCentral_old != -1 ?
 						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_old, state.hCliente_new)) : 0;
 				int perdida_new_new = state.hCentral_new != -1 ?
-						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_new)) : 0;
-				state.entropia -= perdida_old_old;
-				state.entropia += perdida_new_old;
-				state.entropia -= perdida_new_new;
-				state.entropia += perdida_old_new;
+						IAUtils.getPorcentajeInt(IAUtils.getDistanciaSq(state.hCentral_new, state.hCliente_new)) : 10;
+				state.perdida -= perdida_old_old;
+				state.perdida += perdida_new_old;
+				state.perdida -= perdida_new_new;
+				state.perdida += perdida_old_new;
 			}
-
 			state.hCliente_old = -1;
 		}
 

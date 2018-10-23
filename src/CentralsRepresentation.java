@@ -24,7 +24,8 @@ public class CentralsRepresentation {
     // Heuristic members
 
     public double beneficio;
-    public int entropia;
+    public int perdida;
+    public int consumoTotal;
     public int hCentral_old;
     public int hCentral_new;
     public int hCliente_old;
@@ -80,8 +81,6 @@ public class CentralsRepresentation {
 
 
         fillInitialSolution(typeSolInit);
-
-
         fillInitHeuristicParameters();
     }
 
@@ -96,7 +95,7 @@ public class CentralsRepresentation {
         representationCentrales = new double [centrals.size()];
         Arrays.fill(representationClientes, -1);
         Arrays.fill(representationCentrales, 0);
-
+        consumoTotal = 0;
 
         fillInitialSolution(typeSolInit);
 
@@ -116,7 +115,8 @@ public class CentralsRepresentation {
         this.hCliente_old = copy.hCliente_old;
         this.hCliente_new = copy.hCliente_new;
         this.beneficio = copy.beneficio;
-        this.entropia = copy.entropia;
+        this.perdida = copy.perdida;
+        this.consumoTotal = copy.consumoTotal;
     }
 
 
@@ -184,7 +184,7 @@ public class CentralsRepresentation {
 
     private void fillInitHeuristicParameters() throws Exception {
         beneficio = setBeneficio();
-        entropia = setEntropia();
+        perdida = setEntropia();
         hCentral_old = -1;
         hCentral_new = -1;
         hCliente_old = -1;
@@ -243,7 +243,15 @@ public class CentralsRepresentation {
         return entropia;
     }
 
+    protected int setConsumoTotal() {
+        int consumoTotal = 0;
 
+        for (int centralID = 0; centralID < representationCentrales.length; centralID++) {
+            consumoTotal += representationCentrales[centralID];
+        }
+
+        return consumoTotal;
+    }
 
     // Operators and Auxiliary methods for operators
 
@@ -261,6 +269,7 @@ public class CentralsRepresentation {
         if (centralID_old != -1) {
             cenOld = centrals.get(centralID_old);
             consumoOld = IAUtils.getConsumo(cenOld, client);
+            consumoTotal -= consumoOld;
             representationCentrales[centralID_old] -= consumoOld;
             perdidaTotal -= VEnergia.getPerdida(IAUtils.getDistacia(centralID_old, clientID)) * client.getConsumo();
         }
@@ -268,6 +277,7 @@ public class CentralsRepresentation {
         if (centralID_new != -1) {
             cenNew = centrals.get(centralID_new);
             consumoNew = IAUtils.getConsumo(cenNew, client);
+            consumoTotal += consumoNew;
             representationCentrales[centralID_new] += consumoNew;
             perdidaTotal += VEnergia.getPerdida(IAUtils.getDistacia(centralID_new, clientID)) * client.getConsumo();
         }

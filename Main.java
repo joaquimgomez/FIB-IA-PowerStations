@@ -54,6 +54,7 @@ public class Main {
             SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(50000000,100,10,0.001D);
             SearchAgent agent = new SearchAgent(problem, search);
 
+
             printActions(agent.getActions(), true);
             printInstrumentation(agent.getInstrumentation());
             System.out.println("Finished");
