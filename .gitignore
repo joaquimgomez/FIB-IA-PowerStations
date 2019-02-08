@@ -8,4 +8,4 @@ META-INF/
 
 \.idea
 
-/energIA.iml
+*.[iml]
