@@ -5,3 +5,7 @@ META-INF/
 \.idea/artifacts/
 
 \.DS_Store
+
+\.idea
+
+energIA.iml
